@@ -1,0 +1,56 @@
+.sizing-note {
+	margin: 0 0 16px;
+	color: #5f6368;
+	font-size: 0.9rem;
+}
+
+.sizing-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 16px;
+}
+
+.sizing-col {
+	display: grid;
+	gap: 12px;
+	align-content: start;
+	justify-items: start;
+	padding: 16px;
+	border: 1px solid #e2e2dc;
+	border-radius: 12px;
+	background: white;
+}
+
+.sizing-col h3 {
+	margin: 0;
+	font-family: monospace;
+	font-size: 0.85rem;
+}
+
+.sizing-col textarea {
+	width: 100%;
+}
+
+.sizing-col :is(textarea, input, select) {
+	padding: 6px 10px;
+	border: 1px solid #c9c9c2;
+	border-radius: 8px;
+	font: inherit;
+}
+
+/* @key */
+/* 入力内容に合わせて大きさを変える */
+.sizing-content :is(textarea, input, select) {
+	field-sizing: content;
+}
+
+/* 伸び縮みする範囲を決めておく */
+.sizing-content textarea {
+	min-height: 3lh;
+	max-height: 8lh;
+}
+
+.sizing-content input {
+	min-width: 4ch;
+}
+/* @end */

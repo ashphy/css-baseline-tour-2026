@@ -1,0 +1,20 @@
+---
+import FeatureLayout from '../layouts/FeatureLayout.astro';
+import compareHtml from '../demos/field-sizing/compare/demo.html?raw';
+import compareCss from '../demos/field-sizing/compare/style.css?raw';
+
+const demos = [
+	{
+		id: 'compare',
+		label: '比較',
+		html: compareHtml,
+		css: compareCss,
+		points: [
+			{ name: 'field-sizing: content', description: '<textarea>・<input>・<select> の大きさを入力内容に合わせる。既定値は fixed（従来どおり固定）' },
+			{ name: 'min-height / max-height', description: '伸び縮みする範囲を決める。上限を超えるとスクロールバーが出る' },
+		],
+	},
+];
+---
+
+<FeatureLayout slug="field-sizing" demos={demos} />

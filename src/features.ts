@@ -37,6 +37,13 @@ export const features: Feature[] = [
 		summary: '親要素のカスタムプロパティの値に応じて、子要素のスタイルを切り替える',
 		mdn: 'https://developer.mozilla.org/ja/docs/Web/CSS/Guides/Containment/Container_size_and_style_queries',
 	},
+	{
+		slug: 'field-sizing',
+		title: 'field-sizing',
+		status: 'Baseline 2026',
+		summary: '入力欄の大きさを、入力内容に合わせて自動で伸び縮みさせる',
+		mdn: 'https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Properties/field-sizing',
+	},
 ];
 
 export function url(path = '') {
