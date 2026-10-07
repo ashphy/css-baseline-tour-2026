@@ -1,0 +1,49 @@
+---
+import FeatureLayout from '../layouts/FeatureLayout.astro';
+import basicHtml from '../demos/popover/basic/demo.html?raw';
+import basicCss from '../demos/popover/basic/style.css?raw';
+import animationHtml from '../demos/popover/animation/demo.html?raw';
+import animationCss from '../demos/popover/animation/style.css?raw';
+import toastHtml from '../demos/popover/toast/demo.html?raw';
+import toastCss from '../demos/popover/toast/style.css?raw';
+import toastJs from '../demos/popover/toast/script.js?raw';
+
+const demos = [
+	{
+		id: 'basic',
+		label: '基本',
+		html: basicHtml,
+		css: basicCss,
+		points: [
+			{ name: 'popover', description: '要素をポップオーバーにする属性。最前面に表示され、外側のクリックや Esc キーで閉じる' },
+			{ name: 'popovertarget', description: 'ボタンに付ける属性。押すと、指定したIDのポップオーバーを開閉する' },
+			{ name: 'popovertargetaction', description: 'ボタンの動作を show（開く）・hide（閉じる）・toggle（切り替え）から選ぶ' },
+			{ name: ':popover-open', description: 'ポップオーバーが開いている間だけ一致する疑似クラス' },
+		],
+	},
+	{
+		id: 'animation',
+		label: 'アニメーション',
+		html: animationHtml,
+		css: animationCss,
+		points: [
+			{ name: '@starting-style', description: '表示された直後の状態を指定する。ここから通常の状態へ遷移するので、開くときのアニメーションになる' },
+			{ name: 'allow-discrete', description: 'display のように段階的に切り替わるプロパティも遷移させる。閉じるアニメーションの間、表示を残せる' },
+			{ name: 'overlay', description: '閉じるアニメーションの間、最前面に残す。Chrome系のみ対応' },
+		],
+	},
+	{
+		id: 'toast',
+		label: 'トースト',
+		html: toastHtml,
+		css: toastCss,
+		js: toastJs,
+		points: [
+			{ name: 'popover="manual"', description: '外側のクリックや Esc キーでは閉じない。ほかのポップオーバーを開いても閉じない' },
+			{ name: 'showPopover() / hidePopover()', description: 'JavaScriptからポップオーバーを開閉するメソッド' },
+		],
+	},
+];
+---
+
+<FeatureLayout slug="popover" demos={demos} />

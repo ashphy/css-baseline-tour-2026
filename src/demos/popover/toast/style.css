@@ -1,0 +1,42 @@
+#toast-region {
+	display: none;
+	flex-direction: column;
+	gap: 8px;
+	padding: 0;
+	border: 0;
+	background: none;
+	overflow: visible;
+}
+
+#toast-region:popover-open {
+	display: flex;
+}
+
+/* @key */
+#toast-region {
+	/* 標準の「画面中央」ではなく右下に表示する */
+	inset: auto 16px 16px auto;
+	margin: 0;
+}
+/* @end */
+
+.toast {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 12px 16px;
+	border-radius: 10px;
+	background: #1d1d1f;
+	color: white;
+	box-shadow: 0 8px 24px rgb(0 0 0 / 0.2);
+}
+
+.toast button {
+	padding: 2px 8px;
+	border: 1px solid rgb(255 255 255 / 0.4);
+	border-radius: 6px;
+	background: none;
+	color: inherit;
+	font: inherit;
+	cursor: pointer;
+}

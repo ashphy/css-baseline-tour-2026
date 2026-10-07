@@ -1,0 +1,18 @@
+#basic-popover {
+	max-width: 320px;
+	padding: 20px;
+	border: 0;
+	border-radius: 12px;
+	box-shadow: 0 12px 40px rgb(0 0 0 / 0.2);
+}
+
+#basic-popover p {
+	margin: 0 0 12px;
+}
+
+/* @key */
+/* 開いている間だけ一致する疑似クラス */
+#basic-popover:popover-open {
+	outline: 3px solid #3a5bd9;
+}
+/* @end */

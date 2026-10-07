@@ -16,6 +16,13 @@ export const features: Feature[] = [
 		summary: '画面の状態変化を、前後のスナップショットをつなぐアニメーションで表現する',
 		mdn: 'https://developer.mozilla.org/ja/docs/Web/API/View_Transition_API',
 	},
+	{
+		slug: 'popover',
+		title: 'Popover',
+		status: 'Baseline 2025',
+		summary: 'HTMLの属性だけで、最前面に表示されるポップオーバーを開閉する',
+		mdn: 'https://developer.mozilla.org/ja/docs/Web/API/Popover_API',
+	},
 ];
 
 export function url(path = '') {
