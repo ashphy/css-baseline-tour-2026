@@ -1,0 +1,26 @@
+.search-input {
+	width: 100%;
+	max-width: 320px;
+	padding: 8px 12px;
+	border: 1px solid #c9c9c2;
+	border-radius: 8px;
+	font: inherit;
+}
+
+.search-count {
+	margin: 8px 0 16px;
+	color: #5f6368;
+	font-size: 0.9rem;
+}
+
+.search-text {
+	line-height: 1.9;
+}
+
+/* @key */
+/* "search" という名前で登録したハイライトの見た目 */
+::highlight(search) {
+	background-color: #fde047;
+	color: black;
+}
+/* @end */

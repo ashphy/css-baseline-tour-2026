@@ -1,0 +1,37 @@
+---
+import FeatureLayout from '../layouts/FeatureLayout.astro';
+import searchHtml from '../demos/custom-highlights/search/demo.html?raw';
+import searchCss from '../demos/custom-highlights/search/style.css?raw';
+import searchJs from '../demos/custom-highlights/search/script.js?raw';
+import lintHtml from '../demos/custom-highlights/lint/demo.html?raw';
+import lintCss from '../demos/custom-highlights/lint/style.css?raw';
+import lintJs from '../demos/custom-highlights/lint/script.js?raw';
+
+const demos = [
+	{
+		id: 'search',
+		label: '検索',
+		html: searchHtml,
+		css: searchCss,
+		js: searchJs,
+		points: [
+			{ name: 'new Highlight()', description: 'テキストの範囲（Range）をまとめて持つオブジェクト' },
+			{ name: 'CSS.highlights.set()', description: 'ハイライトに名前を付けて登録する。CSSからはこの名前で指定する' },
+			{ name: '::highlight()', description: '登録した名前のハイライトに、色や背景色などの見た目を指定する疑似要素' },
+		],
+	},
+	{
+		id: 'lint',
+		label: '校正',
+		html: lintHtml,
+		css: lintCss,
+		js: lintJs,
+		points: [
+			{ name: '::highlight()', description: '見つけた範囲に下線を付ける。色や背景だけでなく text-decoration も指定できる' },
+			{ name: 'text-decoration-line: spelling-error', description: 'ブラウザ標準のスペルミスと同じ波線を引く（Baseline 2025）。grammar-error は文法ミスの波線' },
+		],
+	},
+];
+---
+
+<FeatureLayout slug="custom-highlights" demos={demos} />

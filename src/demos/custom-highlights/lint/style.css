@@ -1,0 +1,36 @@
+.lint-note {
+	margin: 0 0 12px;
+	color: #5f6368;
+	font-size: 0.9rem;
+}
+
+.lint-text {
+	padding: 4px 16px;
+	border: 1px solid #e2e2dc;
+	border-radius: 12px;
+	background: white;
+	line-height: 2;
+	outline: none;
+}
+
+.lint-text:focus {
+	border-color: #3a5bd9;
+}
+
+.lint-list {
+	margin: 16px 0 0;
+	padding-left: 1.2em;
+	color: #5f6368;
+	font-size: 0.9rem;
+}
+
+/* @key */
+/* ブラウザ標準のスペルミス・文法ミスと同じ波線を使う */
+::highlight(lint-error) {
+	text-decoration-line: spelling-error;
+}
+
+::highlight(lint-warning) {
+	text-decoration-line: grammar-error;
+}
+/* @end */

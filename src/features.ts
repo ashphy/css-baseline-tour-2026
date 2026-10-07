@@ -23,6 +23,13 @@ export const features: Feature[] = [
 		summary: 'HTMLの属性だけで、最前面に表示されるポップオーバーを開閉する',
 		mdn: 'https://developer.mozilla.org/ja/docs/Web/API/Popover_API',
 	},
+	{
+		slug: 'custom-highlights',
+		title: 'Custom Highlight API',
+		status: 'Baseline 2026',
+		summary: 'DOMを変えずに、テキストの任意の範囲に色や下線を付ける',
+		mdn: 'https://developer.mozilla.org/ja/docs/Web/API/CSS_Custom_Highlight_API',
+	},
 ];
 
 export function url(path = '') {
