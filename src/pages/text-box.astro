@@ -1,0 +1,22 @@
+---
+import FeatureLayout from '../layouts/FeatureLayout.astro';
+import compareHtml from '../demos/text-box/compare/demo.html?raw';
+import compareCss from '../demos/text-box/compare/style.css?raw';
+
+const demos = [
+	{
+		id: 'compare',
+		label: '比較',
+		html: compareHtml,
+		css: compareCss,
+		points: [
+			{ name: 'text-box-trim', description: '削る側を決める。trim-both（上下）・trim-start（上）・trim-end（下）' },
+			{ name: 'text-box-edge', description: 'どこまで削るかを決める。cap alphabetic は、上を大文字の高さ、下をベースラインにそろえる' },
+			{ name: 'text-box', description: '上の2つをまとめて書く書き方' },
+			{ name: '和文での注意', description: '漢字は大文字より背が高いので、cap で削ると文字が箱の上にはみ出す。和文向けの ideographic は Chrome が未対応' },
+		],
+	},
+];
+---
+
+<FeatureLayout slug="text-box" demos={demos} />

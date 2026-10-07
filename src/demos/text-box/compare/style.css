@@ -1,0 +1,76 @@
+.tb-note {
+	margin: 0 0 16px;
+	color: #5f6368;
+	font-size: 0.9rem;
+}
+
+.tb-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 16px;
+}
+
+.tb-col {
+	display: grid;
+	gap: 16px;
+	align-content: start;
+	padding: 16px;
+	border: 1px solid #e2e2dc;
+	border-radius: 12px;
+	background: white;
+}
+
+.tb-col h3 {
+	margin: 0;
+	color: #5f6368;
+	font-family: monospace;
+	font-size: 0.85rem;
+}
+
+.tb-row {
+	display: flex;
+	gap: 8px;
+}
+
+.tb-button {
+	padding: 12px 20px;
+	border: 1px solid #1d1d1f;
+	border-radius: 8px;
+	background: white;
+	color: #1d1d1f;
+	font: inherit;
+	font-size: 1.25rem;
+	font-weight: 700;
+	line-height: 1.5;
+}
+
+.tb-card {
+	padding: 16px;
+	border: 1px dashed #9ca3af;
+	border-radius: 12px;
+}
+
+.tb-card h4 {
+	margin: 0 0 8px;
+	font-size: 1.5rem;
+	line-height: 1.5;
+}
+
+.tb-card p {
+	margin: 0;
+	color: #5f6368;
+	font-size: 0.85rem;
+}
+
+/* 文字の箱を見えるようにする */
+.tb-text {
+	display: block;
+	background: rgb(58 91 217 / 0.25);
+}
+
+/* @key */
+/* 上は大文字の高さ、下はベースラインまで、文字の上下の空きを削る */
+.tb-trim .tb-text {
+	text-box: trim-both cap alphabetic;
+}
+/* @end */

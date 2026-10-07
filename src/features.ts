@@ -51,6 +51,13 @@ export const features: Feature[] = [
 		summary: '和文と英字・数字の間に、自動で少し空きを入れる',
 		mdn: 'https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Properties/text-autospace',
 	},
+	{
+		slug: 'text-box',
+		title: 'text-box',
+		status: 'Baseline 未達（Chrome・Safari）',
+		summary: '文字の上下にある余分な空きを削り、見た目の位置をそろえる',
+		mdn: 'https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Properties/text-box',
+	},
 ];
 
 export function url(path = '') {
