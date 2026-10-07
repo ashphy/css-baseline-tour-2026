@@ -1,0 +1,16 @@
+---
+import FeatureLayout from '../layouts/FeatureLayout.astro';
+import cardsHtml from '../demos/view-transitions/cards/demo.html?raw';
+import cardsCss from '../demos/view-transitions/cards/style.css?raw';
+import cardsJs from '../demos/view-transitions/cards/script.js?raw';
+import galleryHtml from '../demos/view-transitions/gallery/demo.html?raw';
+import galleryCss from '../demos/view-transitions/gallery/style.css?raw';
+import galleryJs from '../demos/view-transitions/gallery/script.js?raw';
+
+const demos = [
+	{ id: 'cards', label: 'カードの並べ替え', html: cardsHtml, css: cardsCss, js: cardsJs },
+	{ id: 'gallery', label: '一覧→詳細', html: galleryHtml, css: galleryCss, js: galleryJs },
+];
+---
+
+<FeatureLayout slug="view-transitions" demos={demos} />

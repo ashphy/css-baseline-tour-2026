@@ -1,0 +1,383 @@
+---
+import { Code } from 'astro:components';
+import BaseLayout from './BaseLayout.astro';
+import { features, url } from '../features';
+import { excerpt } from '../excerpt';
+
+export interface Demo {
+	id: string;
+	label: string;
+	html: string;
+	css: string;
+	js?: string;
+}
+
+interface Props {
+	slug: string;
+	demos: Demo[];
+}
+
+const { slug, demos } = Astro.props;
+const index = features.findIndex((f) => f.slug === slug);
+const feature = features[index];
+const prev = features[index - 1];
+const next = features[index + 1];
+
+// 選択中のタブに対応するデモとコードだけを表示する
+const tabCss = demos
+	.map(
+		(d) =>
+			`.feature:has(#tab-${d.id}:checked) :is([data-demo="${d.id}"], [data-code="${d.id}"]) { display: block; }
+.feature:has(#tab-${d.id}:checked) label[for="tab-${d.id}"] { border-bottom-color: var(--color-accent); color: var(--color-accent); }`,
+	)
+	.join('\n');
+---
+
+<BaseLayout title={`${feature.title} | CSS Baseline Tour 2026`}>
+	<div class="feature">
+		<nav id="toc" class="toc" popover aria-label="目次">
+			<a class="toc-home" href={url()}>CSS Baseline Tour 2026</a>
+			<ol>
+				{
+					features.map((f) => (
+						<li>
+							<a href={url(f.slug)} aria-current={f.slug === slug ? 'page' : undefined}>
+								{f.title}
+							</a>
+						</li>
+					))
+				}
+			</ol>
+		</nav>
+
+		<header class="header">
+			<button type="button" class="toc-button" popovertarget="toc">目次</button>
+			<nav class="pager">
+				{prev ? <a href={url(prev.slug)} data-prev>← {prev.title}</a> : <span />}
+				{next ? <a href={url(next.slug)} data-next>{next.title} →</a> : <span />}
+			</nav>
+			<h1>{feature.title}</h1>
+			<p class="lead">
+				<span class="status">{feature.status}</span>
+				{feature.summary}
+				<a href={feature.mdn} target="_blank" rel="noopener">MDN ↗</a>
+			</p>
+		</header>
+
+		<main class="body">
+			<section class="pane demo-pane" aria-label="デモ">
+				<div class="tabs" role="radiogroup" aria-label="デモの切り替え" hidden={demos.length < 2}>
+					{
+						demos.map((d, i) => (
+							<>
+								<input type="radio" name="demo-tab" id={`tab-${d.id}`} checked={i === 0} class="visually-hidden" />
+								<label for={`tab-${d.id}`}>{d.label}</label>
+							</>
+						))
+					}
+				</div>
+				{
+					demos.map((d) => (
+						<div class="demo" data-demo={d.id}>
+							<Fragment set:html={d.html} />
+						</div>
+					))
+				}
+			</section>
+
+			<section class="pane code-pane" aria-label="コード">
+				{
+					demos.map((d) => (
+						<div class="code" data-code={d.id}>
+							{[
+								{ name: 'CSS', lang: 'css', code: excerpt(d.css) },
+								{ name: 'JavaScript', lang: 'js', code: excerpt(d.js ?? '') },
+								{ name: 'HTML', lang: 'html', code: excerpt(d.html) },
+							]
+								.filter((c) => c.code)
+								.map((c) => (
+									<>
+										<h2>{c.name}</h2>
+										<Code code={c.code} lang={c.lang} theme="github-light" />
+									</>
+								))}
+						</div>
+					))
+				}
+			</section>
+		</main>
+	</div>
+
+	{demos.map((d) => <style is:inline set:html={d.css} />)}
+	{demos.map((d) => d.js && <script type="module" is:inline set:html={d.js} />)}
+	<style is:inline set:html={tabCss}></style>
+</BaseLayout>
+
+<script>
+	// ← → キーで前後のページへ移動する（入力欄の操作中は除く）
+	document.addEventListener('keydown', (event) => {
+		if (event.target instanceof Element && event.target.closest('input, textarea, select, [contenteditable]')) return;
+		if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+		const link = document.querySelector<HTMLAnchorElement>(
+			event.key === 'ArrowLeft' ? '[data-prev]' : event.key === 'ArrowRight' ? '[data-next]' : '',
+		);
+		link?.click();
+	});
+</script>
+
+<style>
+	.feature {
+		display: grid;
+		grid-template-columns: 220px minmax(0, 1fr);
+		grid-template-rows: auto 1fr;
+		height: 100dvh;
+	}
+
+	/* 広い画面では popover を通常の要素として左端に常に表示する */
+	.toc {
+		display: block;
+		position: static;
+		grid-row: 1 / -1;
+		width: auto;
+		height: auto;
+		margin: 0;
+		padding: 20px 12px;
+		overflow: auto;
+		border: 0;
+		border-right: 1px solid var(--color-border);
+		background: var(--color-surface);
+		color: inherit;
+	}
+
+	.toc-home {
+		display: block;
+		margin: 0 8px 16px;
+		color: var(--color-text);
+		font-weight: 700;
+		text-decoration: none;
+	}
+
+	.toc ol {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		counter-reset: toc;
+	}
+
+	.toc li a {
+		display: flex;
+		gap: 8px;
+		padding: 6px 8px;
+		border-radius: 8px;
+		color: var(--color-text);
+		font-size: 0.9rem;
+		text-decoration: none;
+		counter-increment: toc;
+	}
+
+	.toc li a::before {
+		content: counter(toc);
+		min-width: 1.5em;
+		color: var(--color-muted);
+		text-align: right;
+	}
+
+	.toc li a:hover {
+		background: var(--color-bg);
+	}
+
+	.toc li a[aria-current='page'] {
+		background: var(--color-accent);
+		color: white;
+	}
+
+	.toc li a[aria-current='page']::before {
+		color: inherit;
+	}
+
+	.toc-button {
+		display: none;
+	}
+
+	.header {
+		padding: 16px 32px 12px;
+		border-bottom: 1px solid var(--color-border);
+		background: var(--color-surface);
+	}
+
+	.pager {
+		display: flex;
+		justify-content: space-between;
+		font-size: 0.9rem;
+	}
+
+	.pager a {
+		text-decoration: none;
+	}
+
+	h1 {
+		margin: 8px 0 4px;
+		font-size: 2rem;
+	}
+
+	.lead {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 12px;
+		margin: 0;
+		color: var(--color-muted);
+	}
+
+	.status {
+		padding: 2px 10px;
+		border-radius: 999px;
+		background: #e3f5e1;
+		color: #1e6b2a;
+		font-size: 0.85rem;
+		font-weight: 700;
+	}
+
+	.body {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+		min-height: 0;
+	}
+
+	.pane {
+		min-height: 0;
+		overflow: auto;
+		padding: 24px 32px;
+	}
+
+	.code-pane {
+		border-left: 1px solid var(--color-border);
+		background: var(--color-surface);
+	}
+
+	.tabs {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 4px;
+		margin-bottom: 24px;
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.tabs label {
+		margin-bottom: -1px;
+		padding: 8px 16px;
+		border-bottom: 3px solid transparent;
+		color: var(--color-muted);
+		font-weight: 700;
+		cursor: pointer;
+	}
+
+	.tabs label:hover {
+		color: var(--color-text);
+	}
+
+	.tabs input:focus-visible + label {
+		outline: 2px solid var(--color-accent);
+		outline-offset: -2px;
+	}
+
+	.visually-hidden {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip-path: inset(50%);
+		white-space: nowrap;
+	}
+
+	.demo,
+	.code {
+		display: none;
+	}
+
+	/* デモ内のボタンの共通の見た目。デモのコードを本題だけにするためここで指定する。デモ側の指定を優先するため詳細度を0にする */
+	:global(:where(.demo button)) {
+		padding: 6px 14px;
+		border: 1px solid var(--color-border);
+		border-radius: 8px;
+		background: var(--color-surface);
+		color: inherit;
+		font: inherit;
+		cursor: pointer;
+	}
+
+	.demo :global([hidden]) {
+		display: none !important;
+	}
+
+	.code h2 {
+		margin: 20px 0 8px;
+		color: var(--color-muted);
+		font-size: 0.85rem;
+		letter-spacing: 0.05em;
+	}
+
+	.code h2:first-child {
+		margin-top: 0;
+	}
+
+	.code :global(pre) {
+		margin: 0;
+		padding: 16px;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		font-size: 0.9rem;
+		line-height: 1.6;
+		tab-size: 2;
+	}
+
+	@media (width < 900px) {
+		.feature {
+			grid-template-columns: minmax(0, 1fr);
+			height: auto;
+		}
+
+		/* 狭い画面では popover として開閉する */
+		.toc {
+			position: fixed;
+			inset: 0 auto 0 0;
+			width: min(280px, 80vw);
+			border-right: 1px solid var(--color-border);
+			box-shadow: 0 0 24px rgb(0 0 0 / 0.15);
+		}
+
+		.toc:not(:popover-open) {
+			display: none;
+		}
+
+		.toc::backdrop {
+			background: rgb(0 0 0 / 0.3);
+		}
+
+		.toc-button {
+			display: inline-block;
+			margin-bottom: 8px;
+			padding: 4px 12px;
+			border: 1px solid var(--color-border);
+			border-radius: 8px;
+			background: var(--color-surface);
+			color: inherit;
+			font: inherit;
+			font-size: 0.9rem;
+			cursor: pointer;
+		}
+
+		.body {
+			grid-template-columns: minmax(0, 1fr);
+		}
+
+		.pane {
+			padding: 20px 16px;
+		}
+
+		.code-pane {
+			border-top: 1px solid var(--color-border);
+			border-left: 0;
+		}
+	}
+</style>

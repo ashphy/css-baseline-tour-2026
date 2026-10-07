@@ -1,16 +1,39 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { features, url } from '../features';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="CSS Baseline Tour 2026">
+	<main>
+		<h1>CSS Baseline Tour 2026</h1>
+		<p>2025年以降にBaselineになったCSSの機能と、もうすぐ使えそうな機能を、触りながら紹介します。</p>
+		<ol>
+			{
+				features.map((f) => (
+					<li>
+						<a href={url(f.slug)}>{f.title}</a>
+						<span>{f.summary}</span>
+					</li>
+				))
+			}
+		</ol>
+	</main>
+</BaseLayout>
+
+<style>
+	main {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 48px 16px;
+	}
+
+	li {
+		margin-bottom: 12px;
+	}
+
+	li span {
+		display: block;
+		color: var(--color-muted);
+		font-size: 0.9rem;
+	}
+</style>
