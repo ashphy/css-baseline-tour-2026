@@ -1,0 +1,21 @@
+---
+import FeatureLayout from '../layouts/FeatureLayout.astro';
+import compareHtml from '../demos/text-autospace/compare/demo.html?raw';
+import compareCss from '../demos/text-autospace/compare/style.css?raw';
+
+const demos = [
+	{
+		id: 'compare',
+		label: '比較',
+		html: compareHtml,
+		css: compareCss,
+		points: [
+			{ name: 'text-autospace: normal', description: '和文と英字・数字が隣り合う所に、自動で少し空きを入れる。半角スペースを手で入れる必要がなくなる' },
+			{ name: 'no-autospace', description: '空きを入れない。Chrome の既定値' },
+			{ name: 'ideograph-alpha など', description: '英字だけ・数字だけに空きを入れる細かい指定は、まだ Chrome が対応していない' },
+		],
+	},
+];
+---
+
+<FeatureLayout slug="text-autospace" demos={demos} />

@@ -44,6 +44,13 @@ export const features: Feature[] = [
 		summary: '入力欄の大きさを、入力内容に合わせて自動で伸び縮みさせる',
 		mdn: 'https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Properties/field-sizing',
 	},
+	{
+		slug: 'text-autospace',
+		title: 'text-autospace',
+		status: '一部 Baseline 2025（normal / no-autospace）',
+		summary: '和文と英字・数字の間に、自動で少し空きを入れる',
+		mdn: 'https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Properties/text-autospace',
+	},
 ];
 
 export function url(path = '') {

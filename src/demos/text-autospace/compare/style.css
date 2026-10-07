@@ -1,0 +1,35 @@
+.autospace-demo {
+	display: grid;
+	gap: 16px;
+}
+
+.autospace-block {
+	padding: 16px 20px;
+	border: 1px solid #e2e2dc;
+	border-radius: 12px;
+	background: white;
+}
+
+.autospace-block h3 {
+	margin: 0 0 8px;
+	color: #5f6368;
+	font-family: monospace;
+	font-size: 0.85rem;
+}
+
+.autospace-text {
+	margin: 0;
+	font-size: 1.5rem;
+	line-height: 1.8;
+}
+
+.autospace-off {
+	text-autospace: no-autospace;
+}
+
+/* @key */
+/* 和文と英字・数字の間に、自動で少し空きを入れる */
+.autospace-on {
+	text-autospace: normal;
+}
+/* @end */
