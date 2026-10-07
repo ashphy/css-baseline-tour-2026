@@ -1,0 +1,43 @@
+.density-control {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	margin-bottom: 16px;
+	font-family: monospace;
+}
+
+.density-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	border: 1px solid #e2e2dc;
+	border-radius: 12px;
+	background: white;
+}
+
+.density-item {
+	display: grid;
+	gap: 4px;
+	padding: 16px 20px;
+	border-bottom: 1px solid #e2e2dc;
+}
+
+.density-item:last-child {
+	border-bottom: 0;
+}
+
+.density-meta {
+	color: #5f6368;
+	font-size: 0.85rem;
+}
+
+/* @key */
+/* 親の --density が compact のとき、一覧を詰めて表示する */
+@container style(--density: compact) {
+	.density-item {
+		grid-template-columns: 1fr auto;
+		padding: 6px 12px;
+		font-size: 0.9rem;
+	}
+}
+/* @end */

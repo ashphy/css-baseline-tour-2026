@@ -1,0 +1,46 @@
+---
+import FeatureLayout from '../layouts/FeatureLayout.astro';
+import variantHtml from '../demos/container-style-queries/variant/demo.html?raw';
+import variantCss from '../demos/container-style-queries/variant/style.css?raw';
+import variantJs from '../demos/container-style-queries/variant/script.js?raw';
+import densityHtml from '../demos/container-style-queries/density/demo.html?raw';
+import densityCss from '../demos/container-style-queries/density/style.css?raw';
+import densityJs from '../demos/container-style-queries/density/script.js?raw';
+import themeHtml from '../demos/container-style-queries/theme/demo.html?raw';
+import themeCss from '../demos/container-style-queries/theme/style.css?raw';
+
+const demos = [
+	{
+		id: 'variant',
+		label: 'カードの種類',
+		html: variantHtml,
+		css: variantCss,
+		js: variantJs,
+		points: [
+			{ name: '@container style()', description: '親要素のカスタムプロパティの値が一致したときだけ、中のスタイルを適用する。container-type の指定は不要' },
+			{ name: '子孫だけが対象', description: '切り替えられるのは、カスタムプロパティを設定した要素の子孫。設定した要素自身は切り替えられない' },
+		],
+	},
+	{
+		id: 'density',
+		label: '表示密度',
+		html: densityHtml,
+		css: densityCss,
+		js: densityJs,
+		points: [
+			{ name: '@container style()', description: '一覧の親に --density を1つ設定するだけで、中のすべての項目の余白や並びが切り替わる' },
+		],
+	},
+	{
+		id: 'theme',
+		label: 'テーマの部分適用',
+		html: themeHtml,
+		css: themeCss,
+		points: [
+			{ name: '@container style()', description: '部品は一番近い親の --theme の値を見る。入れ子にすると、内側だけ別のテーマにできる' },
+		],
+	},
+];
+---
+
+<FeatureLayout slug="container-style-queries" demos={demos} />

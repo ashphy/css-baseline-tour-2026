@@ -30,6 +30,13 @@ export const features: Feature[] = [
 		summary: 'DOMを変えずに、テキストの任意の範囲に色や下線を付ける',
 		mdn: 'https://developer.mozilla.org/ja/docs/Web/API/CSS_Custom_Highlight_API',
 	},
+	{
+		slug: 'container-style-queries',
+		title: 'Container style queries',
+		status: 'Baseline 2026',
+		summary: '親要素のカスタムプロパティの値に応じて、子要素のスタイルを切り替える',
+		mdn: 'https://developer.mozilla.org/ja/docs/Web/CSS/Guides/Containment/Container_size_and_style_queries',
+	},
 ];
 
 export function url(path = '') {

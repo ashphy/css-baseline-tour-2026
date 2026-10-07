@@ -1,0 +1,44 @@
+.theme-panel {
+	display: grid;
+	gap: 12px;
+	justify-items: start;
+	padding: 20px;
+	border: 1px solid #e2e2dc;
+	border-radius: 16px;
+	background: white;
+	color: #1d1d1f;
+}
+
+.theme-panel > div {
+	justify-self: stretch;
+}
+
+.theme-panel p {
+	margin: 0;
+	font-family: monospace;
+}
+
+.theme-button {
+	padding: 8px 16px;
+	border: 0;
+	border-radius: 8px;
+	background: #1d1d1f;
+	color: white;
+	font: inherit;
+	font-weight: 700;
+}
+
+/* @key */
+/* 部品は「一番近い親の --theme」を見て見た目を決める */
+@container style(--theme: dark) {
+	.theme-panel {
+		border-color: #374151;
+		background: #111827;
+		color: #f9fafb;
+	}
+	.theme-button {
+		background: #f9fafb;
+		color: #111827;
+	}
+}
+/* @end */

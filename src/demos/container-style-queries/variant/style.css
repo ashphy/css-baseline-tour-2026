@@ -1,0 +1,79 @@
+.variant-control {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	margin-bottom: 16px;
+	font-family: monospace;
+}
+
+.variant-inner {
+	max-width: 320px;
+	padding: 20px;
+	border: 2px solid #e2e2dc;
+	border-radius: 16px;
+	background: white;
+}
+
+.variant-inner h3 {
+	margin: 0 0 4px;
+}
+
+.variant-inner p {
+	margin: 0 0 16px;
+	color: #5f6368;
+}
+
+.variant-badge {
+	display: none;
+	margin-bottom: 8px;
+	padding: 2px 10px;
+	border-radius: 999px;
+	color: white;
+	font-size: 0.8rem;
+	font-weight: 700;
+}
+
+.variant-button {
+	padding: 8px 16px;
+	border: 0;
+	border-radius: 8px;
+	background: #1d1d1f;
+	color: white;
+	font: inherit;
+	font-weight: 700;
+}
+
+/* @key */
+/* 親の --variant が featured のとき、中の部品をまとめて切り替える */
+@container style(--variant: featured) {
+	.variant-inner {
+		border-color: #3a5bd9;
+	}
+	.variant-badge {
+		display: inline-block;
+		background: #3a5bd9;
+	}
+	.variant-badge::after {
+		content: 'おすすめ';
+	}
+	.variant-button {
+		background: #3a5bd9;
+	}
+}
+/* @end */
+
+@container style(--variant: sale) {
+	.variant-inner {
+		border-color: #e11d48;
+	}
+	.variant-badge {
+		display: inline-block;
+		background: #e11d48;
+	}
+	.variant-badge::after {
+		content: '30% OFF';
+	}
+	.variant-button {
+		background: #e11d48;
+	}
+}
