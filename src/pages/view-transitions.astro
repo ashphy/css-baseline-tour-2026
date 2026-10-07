@@ -8,8 +8,31 @@ import galleryCss from '../demos/view-transitions/gallery/style.css?raw';
 import galleryJs from '../demos/view-transitions/gallery/script.js?raw';
 
 const demos = [
-	{ id: 'cards', label: 'カードの並べ替え', html: cardsHtml, css: cardsCss, js: cardsJs },
-	{ id: 'gallery', label: '一覧→詳細', html: galleryHtml, css: galleryCss, js: galleryJs },
+	{
+		id: 'cards',
+		label: 'カードの並べ替え',
+		html: cardsHtml,
+		css: cardsCss,
+		js: cardsJs,
+		points: [
+			{ name: 'document.startViewTransition()', description: 'コールバック内でDOMを変更すると、変更前後の画面をアニメーションでつなぐ' },
+			{ name: 'view-transition-name', description: '要素に名前を付ける。変更前後で同じ名前の要素は、同じものとして位置と大きさが動く' },
+			{ name: 'view-transition-class', description: '複数の要素にまとめてスタイルを当てるためのクラス名' },
+			{ name: '::view-transition-group()', description: '遷移中の要素を表す疑似要素。アニメーションの時間や速度の変化を指定する' },
+		],
+	},
+	{
+		id: 'gallery',
+		label: '一覧→詳細',
+		html: galleryHtml,
+		css: galleryCss,
+		js: galleryJs,
+		points: [
+			{ name: 'view-transition-name', description: '変更前はサムネイル、変更後は詳細の画像に同じ名前を付けると、2つの要素をつなげて動かせる' },
+			{ name: 'document.startViewTransition()', description: 'コールバック内でDOMを変更すると、変更前後の画面をアニメーションでつなぐ' },
+			{ name: '::view-transition-group()', description: '遷移中の要素を表す疑似要素。アニメーションの時間や速度の変化を指定する' },
+		],
+	},
 ];
 ---
 

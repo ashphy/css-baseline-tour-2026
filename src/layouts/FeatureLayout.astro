@@ -10,6 +10,8 @@ export interface Demo {
 	html: string;
 	css: string;
 	js?: string;
+	/** このデモで使っている新しい構文と、その一言解説 */
+	points?: { name: string; description: string }[];
 }
 
 interface Props {
@@ -89,6 +91,21 @@ const tabCss = demos
 				{
 					demos.map((d) => (
 						<div class="code" data-code={d.id}>
+							{d.points && (
+								<>
+									<h2>使っている機能</h2>
+									<dl class="points">
+										{d.points.map((p) => (
+											<div>
+												<dt>
+													<code>{p.name}</code>
+												</dt>
+												<dd>{p.description}</dd>
+											</div>
+										))}
+									</dl>
+								</>
+							)}
 							{[
 								{ name: 'CSS', lang: 'css', code: excerpt(d.css) },
 								{ name: 'JavaScript', lang: 'js', code: excerpt(d.js ?? '') },
@@ -308,6 +325,27 @@ const tabCss = demos
 
 	.demo :global([hidden]) {
 		display: none !important;
+	}
+
+	.points {
+		display: grid;
+		gap: 10px;
+		margin: 0;
+	}
+
+	.points dt code {
+		padding: 2px 6px;
+		border-radius: 4px;
+		background: #eef1fb;
+		color: var(--color-accent);
+		font-size: 0.9rem;
+		font-weight: 700;
+	}
+
+	.points dd {
+		margin: 4px 0 0;
+		color: var(--color-muted);
+		font-size: 0.9rem;
 	}
 
 	.code h2 {
