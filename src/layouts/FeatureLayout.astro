@@ -60,7 +60,7 @@ const tabCss = demos
 			</nav>
 			<h1>{feature.title}</h1>
 			<p class="lead">
-				<span class="status">{feature.status}</span>
+				<span class="status" data-limited={feature.status.includes('未達') || undefined}>{feature.status}</span>
 				{feature.summary}
 				<a href={feature.mdn} target="_blank" rel="noopener">MDN ↗</a>
 			</p>
@@ -253,6 +253,11 @@ const tabCss = demos
 		color: #1e6b2a;
 		font-size: 0.85rem;
 		font-weight: 700;
+	}
+
+	.status[data-limited] {
+		background: #fdecd8;
+		color: #9a4a0a;
 	}
 
 	.body {
