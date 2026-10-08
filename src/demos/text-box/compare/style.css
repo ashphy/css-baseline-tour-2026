@@ -109,6 +109,7 @@
 	--tb-font: #bbf7d0;
 	--tb-cap: #c7d2fe;
 	--tb-edge: rgb(0 0 0 / 0.5);
+	--tb-em: #ef4444;
 
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
@@ -177,7 +178,17 @@
 /* 大文字の上端とベースラインで削る */
 .tb-layer-cap {
 	--tb-color: var(--tb-cap);
+	position: relative;
 	text-box: trim-both cap alphabetic;
+}
+
+/* font-size の高さ（em box）。3つのフォントとも、ベースラインの 0.12em 下から 1em の範囲にある */
+.tb-layer-cap::after {
+	content: '';
+	position: absolute;
+	inset: auto 0 -0.12em;
+	height: 1em;
+	border: 2px dashed var(--tb-em);
 }
 
 .tb-terms {
@@ -204,6 +215,10 @@
 
 .tb-term-cap {
 	--tb-term-color: var(--tb-cap);
+}
+
+.tb-terms > .tb-term-em {
+	border-left: 8px dashed var(--tb-em);
 }
 
 .tb-terms dt {
