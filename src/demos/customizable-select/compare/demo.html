@@ -1,0 +1,46 @@
+<div class="select-demo">
+	<section class="select-step">
+		<p class="select-step-label">STEP 1</p>
+		<h3 class="select-step-title">これまでは中身を変えられない</h3>
+		<p>select は、枠や文字色は変えられても、<strong>開いたときの一覧はブラウザ任せ</strong>でした。選択肢に書けるのも文字だけです。</p>
+		<p>下の select を開いてみてください。</p>
+		<div class="select-card">
+			<select name="fixed-pet">
+				<option>🐱 ねこ</option>
+				<option>🐶 いぬ</option>
+				<option>🐰 うさぎ</option>
+			</select>
+		</div>
+	</section>
+
+	<section class="select-step">
+		<p class="select-step-label">STEP 2</p>
+		<h3 class="select-step-title">appearance: base-select で自由に作る</h3>
+		<p>select と <code>::picker(select)</code> に <code>appearance: base-select</code> を指定すると、<strong>一覧も含めて CSS で見た目を変えられます</strong>。選択肢には画像や説明文などの要素も書けます。</p>
+		<div class="select-aside">
+			<p class="select-aside-title">未対応のブラウザでは</p>
+			<p>button や selectedcontent は無視され、STEP 1 と同じ従来の select になります。選択肢は文字だけが表示されます。</p>
+		</div>
+		<div class="select-card">
+			<!-- @key -->
+			<select name="custom-pet" class="select-custom">
+				<button>
+					<selectedcontent></selectedcontent>
+				</button>
+				<option value="cat">
+					<span class="select-icon" aria-hidden="true">🐱</span>
+					<span class="select-label">ねこ<small>気ままに暮らす</small></span>
+				</option>
+				<option value="dog">
+					<span class="select-icon" aria-hidden="true">🐶</span>
+					<span class="select-label">いぬ<small>散歩が好き</small></span>
+				</option>
+				<option value="rabbit">
+					<span class="select-icon" aria-hidden="true">🐰</span>
+					<span class="select-label">うさぎ<small>静かに過ごす</small></span>
+				</option>
+			</select>
+			<!-- @end -->
+		</div>
+	</section>
+</div>

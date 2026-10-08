@@ -1,0 +1,128 @@
+.select-demo {
+	line-height: 1.8;
+}
+
+.select-demo p {
+	margin: 0 0 12px;
+}
+
+.select-demo code {
+	font-family: var(--font-mono);
+	font-size: 0.85rem;
+	font-weight: 600;
+}
+
+.select-step {
+	display: grid;
+	gap: 4px;
+	padding-bottom: 32px;
+}
+
+.select-step + .select-step {
+	padding-top: 32px;
+	border-top: 1px solid var(--color-border);
+}
+
+.select-demo .select-step-label {
+	margin: 0;
+	color: var(--color-accent);
+	font-family: var(--font-mono);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+}
+
+.select-step-title {
+	margin: 0 0 8px;
+	font-size: 1.4rem;
+}
+
+.select-aside {
+	margin-bottom: 16px;
+	padding: 12px 16px;
+	border-radius: 8px;
+	background: var(--color-bg);
+	font-size: 0.9rem;
+}
+
+.select-demo .select-aside p {
+	margin: 0;
+}
+
+.select-demo .select-aside-title {
+	font-weight: 700;
+}
+
+.select-card {
+	margin-top: 8px;
+	padding: 16px;
+	border: 1px solid var(--color-border);
+	border-radius: 12px;
+	background: white;
+}
+
+.select-card select {
+	padding: 6px 10px;
+	border: 1px solid #c9c9c2;
+	border-radius: 8px;
+	font: inherit;
+}
+
+.select-label small {
+	display: block;
+	color: var(--color-muted);
+	font-size: 0.75rem;
+}
+
+/* @key */
+/* select と一覧の両方で、カスタマイズできる見た目に切り替える */
+.select-custom,
+.select-custom::picker(select) {
+	appearance: base-select;
+}
+
+.select-custom {
+	min-width: 220px;
+	background: white;
+}
+
+/* 一覧（ポップオーバー） */
+.select-custom::picker(select) {
+	margin-top: 4px;
+	padding: 4px;
+	border: 1px solid var(--color-border);
+	border-radius: 8px;
+	box-shadow: 0 8px 24px rgb(0 0 0 / 0.12);
+}
+
+.select-custom option {
+	gap: 12px;
+	padding: 8px 12px;
+	border-radius: 6px;
+}
+
+.select-custom option:checked {
+	background: var(--color-accent-soft);
+}
+
+/* 選択中の印を右端へ */
+.select-custom option::checkmark {
+	order: 1;
+	margin-left: auto;
+	color: var(--color-accent);
+}
+
+/* 閉じているときは説明文を隠す */
+.select-custom selectedcontent small {
+	display: none;
+}
+
+/* 開いている間は矢印を上向きに */
+.select-custom::picker-icon {
+	transition: rotate 0.2s;
+}
+
+.select-custom:open::picker-icon {
+	rotate: 180deg;
+}
+/* @end */

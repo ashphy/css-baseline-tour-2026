@@ -1,0 +1,23 @@
+---
+import FeatureLayout from '../layouts/FeatureLayout.astro';
+import compareHtml from '../demos/customizable-select/compare/demo.html?raw';
+import compareCss from '../demos/customizable-select/compare/style.css?raw';
+
+const demos = [
+	{
+		id: 'compare',
+		label: '比較',
+		html: compareHtml,
+		css: compareCss,
+		points: [
+			{ name: 'appearance: base-select', description: 'select と ::picker(select) の両方に指定すると、CSS で見た目を自由に変えられるようになる' },
+			{ name: '<button> と <selectedcontent>', description: 'select の最初の子に button を置くと、閉じているときの表示を置き換える。selectedcontent には選んだ option の中身が複製される' },
+			{ name: '::picker(select)', description: '開いたときの一覧。ポップオーバーとして最前面に表示される' },
+			{ name: '::checkmark / ::picker-icon', description: '選択中の option に付く印と、閉じているときの矢印' },
+			{ name: ':open', description: '一覧が開いている間だけ一致する疑似クラス' },
+		],
+	},
+];
+---
+
+<FeatureLayout slug="customizable-select" demos={demos} />
