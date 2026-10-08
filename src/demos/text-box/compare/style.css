@@ -229,6 +229,119 @@
 	margin: 0;
 }
 
+/* STEP 2: 箱の高さを線で示す図 */
+.tb-metrics-scroll {
+	overflow-x: auto;
+	margin: 8px 0 16px;
+	border: 1px solid var(--color-border);
+	border-radius: 12px;
+	background: white;
+}
+
+.tb-metrics {
+	--tb-label-start: 8.5rem;
+	--tb-label-end: 8rem;
+
+	width: max-content;
+	padding: 24px 16px;
+}
+
+.tb-demo .tb-metrics-head {
+	display: flex;
+	justify-content: space-between;
+	margin: 0 0 24px;
+	color: var(--color-muted);
+	font-size: 0.8rem;
+	font-weight: 700;
+}
+
+.tb-metrics-head span:last-child {
+	width: var(--tb-label-end);
+}
+
+/* 線を引く要素を同じ場所に重ね、ベースラインの高さをそろえる */
+.tb-metrics-stack {
+	display: grid;
+	align-items: baseline;
+	font-family: 'Noto Sans JP', sans-serif;
+	font-size: 9rem;
+	font-weight: 700;
+	line-height: 2;
+}
+
+/* 左右のラベルの間にだけ、上端と下端の線を引く */
+.tb-metric {
+	grid-area: 1 / 1;
+	position: relative;
+	padding-inline: var(--tb-label-start) var(--tb-label-end);
+	background:
+		var(--tb-metric-line) top / 100% 1px no-repeat content-box,
+		var(--tb-metric-line) bottom / 100% 1px no-repeat content-box;
+	color: transparent;
+	--tb-metric-line: linear-gradient(var(--tb-metric-color), var(--tb-metric-color));
+}
+
+.tb-metric-line {
+	--tb-metric-color: #a16207;
+	color: #1d1d1f;
+}
+
+.tb-metric-text {
+	--tb-metric-color: #15803d;
+	text-box: trim-both text;
+}
+
+.tb-metric-cap {
+	--tb-metric-color: #4f46e5;
+	background:
+		var(--tb-metric-line) top / 100% 1px no-repeat content-box,
+		linear-gradient(#1d1d1f, #1d1d1f) bottom / 100% 1px no-repeat content-box;
+	text-box: trim-both cap alphabetic;
+}
+
+/* font-size の高さ（em box）。Noto Sans JP では、ベースラインの 0.12em 下から 1em の範囲 */
+.tb-metric-em {
+	--tb-metric-color: #ef4444;
+	--tb-metric-line: repeating-linear-gradient(90deg, var(--tb-metric-color) 0 6px, transparent 6px 10px);
+
+	position: absolute;
+	inset: auto 0 -0.12em;
+	height: 1em;
+}
+
+.tb-metric-label {
+	position: absolute;
+	inset-inline: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	color: var(--tb-metric-color);
+	font-family: var(--font-mono);
+	font-size: 0.7rem;
+	font-weight: 600;
+	line-height: 1;
+	white-space: nowrap;
+}
+
+.tb-metric-label span:last-child {
+	width: var(--tb-label-end);
+}
+
+.tb-metric-top {
+	top: 0;
+	translate: 0 -50%;
+}
+
+.tb-metric-bottom {
+	bottom: 0;
+	translate: 0 50%;
+}
+
+/* 大文字の上端とベースラインで色を分ける */
+.tb-metric-cap > .tb-metric-bottom {
+	color: #1d1d1f;
+}
+
 /* STEP 3: カードの比較 */
 .tb-grid {
 	display: grid;

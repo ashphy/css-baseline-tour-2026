@@ -63,6 +63,33 @@
 			</dl>
 		</div>
 		<p>IBM Plex Sans JP は大文字の下の余白が上より大きく、Noto Sans JP は逆に上の余白が大きくなっています。BIZ UDPGothic は上下とも余白が小さめです。上下の余白が同じでないフォントでは、箱を中央にそろえても文字は上か下に寄ります。STEP 1 で文字が下がって見えたのはこのためです。</p>
+		<p>Noto Sans JP の箱の主な高さを、線で示したのが下の図です。左は CSS での呼び名、右はフォントファイルの中で値を持っている場所です。</p>
+		<div class="tb-metrics-scroll">
+			<div class="tb-metrics">
+				<p class="tb-metrics-head"><span>CSS</span><span>OpenType</span></p>
+				<div class="tb-metrics-stack">
+					<div class="tb-metric tb-metric-line">
+						Hxp 見
+						<span class="tb-metric-label tb-metric-top"><span>line-height の上端</span><span></span></span>
+						<span class="tb-metric-label tb-metric-bottom"><span>line-height の下端</span><span></span></span>
+					</div>
+					<div class="tb-metric tb-metric-text">
+						Hxp 見
+						<span class="tb-metric-label tb-metric-top"><span>text</span><span>hhea.ascender</span></span>
+						<span class="tb-metric-label tb-metric-bottom"><span>text</span><span>hhea.descender</span></span>
+					</div>
+					<div class="tb-metric tb-metric-cap">
+						Hxp 見
+						<span class="tb-metric-label tb-metric-top"><span>cap</span><span>OS/2.sCapHeight</span></span>
+						<span class="tb-metric-label tb-metric-bottom"><span>alphabetic</span><span>BASE / romn</span></span>
+						<span class="tb-metric tb-metric-em">
+							<span class="tb-metric-label tb-metric-top"><span>1em（font-size）</span><span>BASE / ideo + 1em</span></span>
+							<span class="tb-metric-label tb-metric-bottom"><span>1em（font-size）</span><span>BASE / ideo</span></span>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
 		<p>この2つの空きのせいで、ボタンの文字が上下の真ん中に見えなかったり、見出しの上の余白が padding より広く見えたりします。</p>
 	</section>
 
