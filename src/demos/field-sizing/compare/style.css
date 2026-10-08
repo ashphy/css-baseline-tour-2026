@@ -1,53 +1,74 @@
-.sizing-note {
-	display: flex;
-	gap: 12px;
-	align-items: baseline;
-	margin: 0 0 16px;
-	padding: 10px 16px;
-	border-left: 4px solid #2050b8;
-	border-radius: 4px;
-	background: #eef2fb;
+.sizing-demo {
+	line-height: 1.8;
+}
+
+.sizing-demo p {
+	margin: 0 0 12px;
+}
+
+.sizing-demo code {
+	font-family: var(--font-mono);
+	font-size: 0.85rem;
+	font-weight: 600;
+}
+
+.sizing-step {
+	display: grid;
+	gap: 4px;
+	padding-bottom: 32px;
+}
+
+.sizing-step + .sizing-step {
+	padding-top: 32px;
+	border-top: 1px solid var(--color-border);
+}
+
+.sizing-demo .sizing-step-label {
+	margin: 0;
+	color: var(--color-accent);
+	font-family: var(--font-mono);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+}
+
+.sizing-step-title {
+	margin: 0 0 8px;
+	font-size: 1.4rem;
+}
+
+.sizing-aside {
+	margin-bottom: 16px;
+	padding: 12px 16px;
+	border-radius: 8px;
+	background: var(--color-bg);
 	font-size: 0.9rem;
 }
 
-.sizing-note-label {
-	flex: none;
-	padding: 2px 8px;
-	border-radius: 4px;
-	background: #2050b8;
-	color: white;
-	font-size: 0.75rem;
-	font-weight: bold;
+.sizing-demo .sizing-aside p {
+	margin: 0;
 }
 
-.sizing-grid {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 16px;
+.sizing-demo .sizing-aside-title {
+	font-weight: 700;
 }
 
-.sizing-col {
+.sizing-card {
 	display: grid;
 	gap: 12px;
-	align-content: start;
 	justify-items: start;
+	margin-top: 8px;
 	padding: 16px;
-	border: 1px solid #e2e2dc;
+	border: 1px solid var(--color-border);
 	border-radius: 12px;
 	background: white;
 }
 
-.sizing-col h3 {
-	margin: 0;
-	font-family: monospace;
-	font-size: 0.85rem;
-}
-
-.sizing-col textarea {
+.sizing-card textarea {
 	width: 100%;
 }
 
-.sizing-col :is(textarea, input, select) {
+.sizing-card :is(textarea, input, select) {
 	padding: 6px 10px;
 	border: 1px solid #c9c9c2;
 	border-radius: 8px;

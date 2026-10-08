@@ -1,8 +1,11 @@
 <div class="sizing-demo">
-	<p class="sizing-note"><span class="sizing-note-label">操作</span>左右の入力欄に文字を入力して、大きさの変わり方を比べてください。</p>
-	<div class="sizing-grid">
-		<div class="sizing-col">
-			<h3>field-sizing: fixed（既定値）</h3>
+	<section class="sizing-step">
+		<p class="sizing-step-label">STEP 1</p>
+		<h3 class="sizing-step-title">これまでは大きさが固定</h3>
+		<p>入力欄の大きさは、中身の量に関係なく決まっていました。下の入力欄に文字を足してみてください。</p>
+		<p>textarea は<strong>高さが変わらずスクロールバーが出て</strong>、input は<strong>幅が変わりません</strong>。</p>
+		<div class="sizing-card">
+			<code>field-sizing: fixed（既定値）</code>
 			<textarea name="fixed-textarea">複数行の文章を入力すると、スクロールバーが出ます。</textarea>
 			<input type="text" name="fixed-input" value="山田" />
 			<select name="fixed-select">
@@ -10,8 +13,18 @@
 				<option>北海道 札幌市 中央区</option>
 			</select>
 		</div>
-		<div class="sizing-col sizing-content">
-			<h3>field-sizing: content</h3>
+	</section>
+
+	<section class="sizing-step">
+		<p class="sizing-step-label">STEP 2</p>
+		<h3 class="sizing-step-title">field-sizing: content で中身に合わせる</h3>
+		<p>同じ入力欄に <code>field-sizing: content</code> を指定すると、<strong>入力した内容に合わせて大きさが変わります</strong>。select も選んだ項目の長さに合わせて幅が変わります。</p>
+		<div class="sizing-aside">
+			<p class="sizing-aside-title">伸びすぎを防ぐ</p>
+			<p>min-height・max-height で伸び縮みする範囲を決めておきます。上限を超えるとスクロールバーが出ます。</p>
+		</div>
+		<div class="sizing-card sizing-content">
+			<code>field-sizing: content</code>
 			<textarea name="content-textarea">複数行の文章を入力すると、高さが伸びます。</textarea>
 			<input type="text" name="content-input" value="山田" />
 			<select name="content-select">
@@ -19,5 +32,5 @@
 				<option>北海道 札幌市 中央区</option>
 			</select>
 		</div>
-	</div>
+	</section>
 </div>
