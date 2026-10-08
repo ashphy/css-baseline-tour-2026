@@ -14,12 +14,12 @@
 | Container style queries | Baseline 2026 |
 | field-sizing | Baseline 2026 |
 | text-autospace | 一部 Baseline 2025（normal / no-autospace） |
-| text-box | Baseline 未達（Chrome・Safari） |
-| Customizable `<select>` | Baseline 未達（Chrome・Safari） |
-| word-break: auto-phrase | Baseline 未達（Chrome） |
-| Gap decorations | Baseline 未達（Chrome） |
-| Grid lanes | Baseline 未達（Safari） |
-| Anchor positioning | Baseline 未達（Chrome・Firefox・Safari 27） |
+| text-box | Baseline 未達（対応: Chrome・Safari） |
+| Customizable `<select>` | Baseline 未達（対応: Chrome・Safari） |
+| word-break: auto-phrase | Baseline 未達（対応: Chrome） |
+| Gap decorations | Baseline 未達（対応: Chrome） |
+| Grid lanes | Baseline 未達（対応: Safari） |
+| Anchor positioning | Baseline 未達（対応: Safari） |
 
 紹介する機能を選ぶための候補一覧は [docs/candidates.md](docs/candidates.md) にあります。
 
