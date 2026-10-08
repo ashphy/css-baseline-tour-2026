@@ -1,13 +1,225 @@
-.tb-note {
-	margin: 0 0 16px;
-	color: #5f6368;
-	font-size: 0.9rem;
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&family=BIZ+UDPGothic:wght@700&display=swap");
+
+.tb-demo {
+	line-height: 1.8;
 }
 
+.tb-demo p {
+	margin: 0 0 12px;
+}
+
+.tb-demo code {
+	font-family: var(--font-mono);
+	font-size: 0.85rem;
+	font-weight: 600;
+}
+
+.tb-step {
+	display: grid;
+	gap: 4px;
+	padding-bottom: 32px;
+}
+
+.tb-step + .tb-step {
+	padding-top: 32px;
+	border-top: 1px solid var(--color-border);
+}
+
+.tb-demo .tb-step-label {
+	margin: 0;
+	color: var(--color-accent);
+	font-family: var(--font-mono);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+}
+
+.tb-step-title {
+	margin: 0 0 8px;
+	font-size: 1.4rem;
+}
+
+/* STEP 1: アイコン付きのボタン */
+.tb-problem {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	margin: 8px 0 16px;
+	padding: 24px;
+	border: 1px solid var(--color-border);
+	border-radius: 12px;
+	background: white;
+}
+
+.tb-icon-button {
+	display: inline-flex;
+	gap: 8px;
+	align-items: center;
+	height: 2.5em;
+	padding: 0 1em;
+	border: none;
+	border-radius: 999px;
+	background: #1d1d1f;
+	color: white;
+	font-family: 'Noto Sans JP', sans-serif;
+	font-size: 1.5rem;
+	font-weight: 700;
+	line-height: 1.5;
+}
+
+.tb-icon {
+	width: 1em;
+	height: 1em;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 3;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+.tb-demo .tb-problem-label {
+	flex-basis: 100%;
+	margin: 0;
+	color: var(--color-muted);
+	font-family: var(--font-mono);
+	font-size: 0.85rem;
+}
+
+/* 2倍に拡大する */
+.tb-problem-guide .tb-icon-button {
+	position: relative;
+	font-size: 3rem;
+}
+
+/* アイコンの上端と下端の高さに、文字より手前に線を引く */
+.tb-problem-guide .tb-icon-button::after {
+	--tb-guide: linear-gradient(#ef4444, #ef4444);
+
+	content: '';
+	position: absolute;
+	inset: 0;
+	background:
+		var(--tb-guide) 0 calc(50% - 0.375em) / 100% 1px no-repeat,
+		var(--tb-guide) 0 calc(50% + 0.375em) / 100% 1px no-repeat;
+}
+
+/* STEP 2: 文字の箱の3つの範囲 */
+.tb-layers {
+	--tb-line: #fde68a;
+	--tb-font: #bbf7d0;
+	--tb-cap: #c7d2fe;
+	--tb-edge: rgb(0 0 0 / 0.5);
+
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+	gap: 24px 16px;
+	margin: 8px 0 16px;
+	padding: 24px;
+	border: 1px solid var(--color-border);
+	border-radius: 12px;
+	background: white;
+}
+
+.tb-font-col {
+	display: grid;
+	gap: 8px;
+	align-content: start;
+}
+
+.tb-demo .tb-font-name {
+	margin: 0;
+	color: var(--color-muted);
+	font-size: 0.8rem;
+	font-weight: 700;
+}
+
+.tb-font-plex {
+	font-family: 'IBM Plex Sans JP', sans-serif;
+}
+
+.tb-font-noto-sans {
+	font-family: 'Noto Sans JP', sans-serif;
+}
+
+.tb-font-biz {
+	font-family: 'BIZ UDPGothic', sans-serif;
+}
+
+/* 3つの箱を同じ場所に重ね、ベースラインの高さをそろえる */
+.tb-layers-stack {
+	display: grid;
+	align-items: baseline;
+}
+
+/* 箱の上端と下端に線を引く */
+.tb-layer {
+	grid-area: 1 / 1;
+	padding-left: 8px;
+	background:
+		linear-gradient(var(--tb-edge), var(--tb-edge)) top / 100% 1px no-repeat,
+		linear-gradient(var(--tb-edge), var(--tb-edge)) bottom / 100% 1px no-repeat,
+		var(--tb-color);
+	font-size: 3.5rem;
+	font-weight: 700;
+	line-height: 2;
+}
+
+.tb-layer-line {
+	--tb-color: var(--tb-line);
+}
+
+/* フォントの上端と下端で削る */
+.tb-layer-font {
+	--tb-color: var(--tb-font);
+	text-box: trim-both text;
+}
+
+/* 大文字の上端とベースラインで削る */
+.tb-layer-cap {
+	--tb-color: var(--tb-cap);
+	text-box: trim-both cap alphabetic;
+}
+
+.tb-terms {
+	display: grid;
+	grid-column: 1 / -1;
+	gap: 12px;
+	margin: 0;
+	font-size: 0.9rem;
+	line-height: 1.6;
+}
+
+.tb-terms > div {
+	padding-left: 12px;
+	border-left: 8px solid var(--tb-term-color);
+}
+
+.tb-term-line {
+	--tb-term-color: var(--tb-line);
+}
+
+.tb-term-font {
+	--tb-term-color: var(--tb-font);
+}
+
+.tb-term-cap {
+	--tb-term-color: var(--tb-cap);
+}
+
+.tb-terms dt {
+	font-weight: 700;
+}
+
+.tb-terms dd {
+	margin: 0;
+}
+
+/* STEP 3: カードの比較 */
 .tb-grid {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 16px;
+	margin-top: 8px;
 }
 
 .tb-col {
@@ -15,33 +227,16 @@
 	gap: 16px;
 	align-content: start;
 	padding: 16px;
-	border: 1px solid #e2e2dc;
+	border: 1px solid var(--color-border);
 	border-radius: 12px;
 	background: white;
 }
 
-.tb-col h3 {
+.tb-col h4 {
 	margin: 0;
-	color: #5f6368;
-	font-family: monospace;
+	color: var(--color-muted);
+	font-family: var(--font-mono);
 	font-size: 0.85rem;
-}
-
-.tb-row {
-	display: flex;
-	gap: 8px;
-}
-
-.tb-button {
-	padding: 12px 20px;
-	border: 1px solid #1d1d1f;
-	border-radius: 8px;
-	background: white;
-	color: #1d1d1f;
-	font: inherit;
-	font-size: 1.25rem;
-	font-weight: 700;
-	line-height: 1.5;
 }
 
 .tb-card {
@@ -50,16 +245,19 @@
 	border-radius: 12px;
 }
 
-.tb-card h4 {
-	margin: 0 0 8px;
-	font-size: 1.5rem;
-	line-height: 1.5;
+.tb-demo .tb-card p {
+	margin: 0;
+	color: var(--color-muted);
+	font-size: 0.85rem;
+	line-height: 1.6;
 }
 
-.tb-card p {
-	margin: 0;
-	color: #5f6368;
-	font-size: 0.85rem;
+.tb-demo .tb-card .tb-card-title {
+	margin: 0 0 8px;
+	color: inherit;
+	font-size: 1.5rem;
+	font-weight: 700;
+	line-height: 1.5;
 }
 
 /* 文字の箱を見えるようにする */
@@ -70,6 +268,7 @@
 
 /* @key */
 /* 上は大文字の高さ、下はベースラインまで、文字の上下の空きを削る */
+.tb-trim .tb-icon-button span,
 .tb-trim .tb-text {
 	text-box: trim-both cap alphabetic;
 }

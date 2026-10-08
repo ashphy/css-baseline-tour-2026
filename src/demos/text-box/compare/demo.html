@@ -1,27 +1,99 @@
 <div class="tb-demo">
-	<p class="tb-note">薄い青の部分が、文字の箱（行の高さ）です。</p>
-	<div class="tb-grid">
-		<section class="tb-col">
-			<h3>指定なし</h3>
-			<div class="tb-row">
-				<button type="button" class="tb-button"><span class="tb-text">Save</span></button>
-				<button type="button" class="tb-button"><span class="tb-text">保存する</span></button>
+	<section class="tb-step">
+		<p class="tb-step-label">STEP 1</p>
+		<h3 class="tb-step-title">アイコンと文字が上下にずれる</h3>
+		<p>Noto Sans JP で、アイコンと文字を並べたボタンを作りました。<code>align-items: center</code> で上下の中央にそろえています。</p>
+		<div class="tb-problem">
+			<button type="button" class="tb-icon-button"><svg class="tb-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5V15m0 0-5-5m5 5 5-5M4 19.5h16" /></svg><span>保存する</span></button>
+			<button type="button" class="tb-icon-button"><svg class="tb-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5V15m0 0-5-5m5 5 5-5M4 19.5h16" /></svg><span>Download</span></button>
+		</div>
+		<p>アイコンに比べて、<strong>文字が少し下に下がって見えます</strong>。2倍に拡大して、アイコンの上端と下端に赤い線を引きました。文字は上の線から離れ、下の線からはみ出しています。</p>
+		<div class="tb-problem tb-problem-guide">
+			<button type="button" class="tb-icon-button"><svg class="tb-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5V15m0 0-5-5m5 5 5-5M4 19.5h16" /></svg><span>保存する</span></button>
+			<button type="button" class="tb-icon-button"><svg class="tb-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5V15m0 0-5-5m5 5 5-5M4 19.5h16" /></svg><span>Download</span></button>
+		</div>
+	</section>
+
+	<section class="tb-step">
+		<p class="tb-step-label">STEP 2</p>
+		<h3 class="tb-step-title">文字の上下には空きがある</h3>
+		<p>文字の箱は、目に見える文字よりひと回り大きく作られます。下は、同じ「Hg 見」の箱を3つの範囲に分けて色を付け、境目に線を引いたものです。フォントによって空きの大きさが違います。</p>
+		<div class="tb-layers">
+			<div class="tb-font-col tb-font-plex">
+				<p class="tb-font-name">IBM Plex Sans JP</p>
+				<div class="tb-layers-stack" aria-hidden="true">
+					<div class="tb-layer tb-layer-line">Hg 見</div>
+					<div class="tb-layer tb-layer-font">Hg 見</div>
+					<div class="tb-layer tb-layer-cap">Hg 見</div>
+				</div>
 			</div>
-			<div class="tb-card">
-				<h4 class="tb-text">Title 見出し</h4>
-				<p>カードの上の余白は padding の 16px だけのはずが、見出しの上に空きが足されて広く見えます。</p>
+			<div class="tb-font-col tb-font-noto-sans">
+				<p class="tb-font-name">Noto Sans JP</p>
+				<div class="tb-layers-stack" aria-hidden="true">
+					<div class="tb-layer tb-layer-line">Hg 見</div>
+					<div class="tb-layer tb-layer-font">Hg 見</div>
+					<div class="tb-layer tb-layer-cap">Hg 見</div>
+				</div>
 			</div>
-		</section>
-		<section class="tb-col tb-trim">
-			<h3>text-box: trim-both cap alphabetic</h3>
-			<div class="tb-row">
-				<button type="button" class="tb-button"><span class="tb-text">Save</span></button>
-				<button type="button" class="tb-button"><span class="tb-text">保存する</span></button>
+			<div class="tb-font-col tb-font-biz">
+				<p class="tb-font-name">BIZ UDPGothic</p>
+				<div class="tb-layers-stack" aria-hidden="true">
+					<div class="tb-layer tb-layer-line">Hg 見</div>
+					<div class="tb-layer tb-layer-font">Hg 見</div>
+					<div class="tb-layer tb-layer-cap">Hg 見</div>
+				</div>
 			</div>
-			<div class="tb-card">
-				<h4 class="tb-text">Title 見出し</h4>
-				<p>見出しの上の空きが削られ、上の余白が padding の 16px どおりになります。</p>
-			</div>
-		</section>
-	</div>
+			<dl class="tb-terms">
+				<div class="tb-term-line">
+					<dt>ハーフレディング</dt>
+					<dd>line-height からフォントの高さを引いた残りを、半分ずつ文字の上と下に足したもの。line-height を大きくするほど増えます（ここでは <code>line-height: 2</code>）。</dd>
+				</div>
+				<div class="tb-term-font">
+					<dt>フォント上部・下部の余白</dt>
+					<dd>フォント自体が持つ空きです。アクセント記号（Å など）や漢字のように大文字より背の高い文字のために、大文字の上に空きがあります。下は g や y の下に伸びる部分のための空きです。</dd>
+				</div>
+				<div class="tb-term-cap">
+					<dt>大文字の上端〜ベースライン</dt>
+					<dd>目に見える文字の高さです。</dd>
+				</div>
+			</dl>
+		</div>
+		<p>IBM Plex Sans JP は大文字の下の余白が上より大きく、Noto Sans JP は逆に上の余白が大きくなっています。BIZ UDPGothic は上下とも余白が小さめです。上下の余白が同じでないフォントでは、箱を中央にそろえても文字は上か下に寄ります。STEP 1 で文字が下がって見えたのはこのためです。</p>
+		<p>この2つの空きのせいで、ボタンの文字が上下の真ん中に見えなかったり、見出しの上の余白が padding より広く見えたりします。</p>
+	</section>
+
+	<section class="tb-step">
+		<p class="tb-step-label">STEP 3</p>
+		<h3 class="tb-step-title">text-box で空きを削る</h3>
+		<p><code>text-box: trim-both cap alphabetic</code> を指定すると、上は大文字の上端、下はベースラインまで箱を削ります。STEP 2 の青の範囲だけが残るので、箱を中央にそろえると文字も中央にそろいます。</p>
+		<p>STEP 1 のボタンの文字に指定しました。赤い線はアイコンの上端と下端です。</p>
+		<div class="tb-problem tb-problem-guide">
+			<h4 class="tb-problem-label">指定なし</h4>
+			<button type="button" class="tb-icon-button"><svg class="tb-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5V15m0 0-5-5m5 5 5-5M4 19.5h16" /></svg><span>保存する</span></button>
+			<button type="button" class="tb-icon-button"><svg class="tb-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5V15m0 0-5-5m5 5 5-5M4 19.5h16" /></svg><span>Download</span></button>
+		</div>
+		<div class="tb-problem tb-problem-guide tb-trim">
+			<h4 class="tb-problem-label">text-box: trim-both cap alphabetic</h4>
+			<button type="button" class="tb-icon-button"><svg class="tb-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5V15m0 0-5-5m5 5 5-5M4 19.5h16" /></svg><span>保存する</span></button>
+			<button type="button" class="tb-icon-button"><svg class="tb-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5V15m0 0-5-5m5 5 5-5M4 19.5h16" /></svg><span>Download</span></button>
+		</div>
+		<p>指定すると、<strong>文字が線の間に収まり、アイコンと上下の位置がそろいます</strong>。</p>
+		<p>カードの見出しでも同じです。薄い青の部分が文字の箱です。</p>
+		<div class="tb-grid">
+			<section class="tb-col">
+				<h4>指定なし</h4>
+				<div class="tb-card">
+					<p class="tb-card-title tb-text">Title 見出し</p>
+					<p>カードの上の余白は padding の 16px だけのはずが、見出しの上に空きが足されて広く見えます。</p>
+				</div>
+			</section>
+			<section class="tb-col tb-trim">
+				<h4>text-box: trim-both cap alphabetic</h4>
+				<div class="tb-card">
+					<p class="tb-card-title tb-text">Title 見出し</p>
+					<p>見出しの上の空きが削られ、上の余白が padding の 16px どおりになります。</p>
+				</div>
+			</section>
+		</div>
+	</section>
 </div>
