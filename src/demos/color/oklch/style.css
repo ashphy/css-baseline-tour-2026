@@ -1,0 +1,59 @@
+.oklch-note {
+	margin: 0 0 16px;
+	color: #5f6368;
+	font-size: 0.9rem;
+}
+
+.oklch-control {
+	display: flex;
+	gap: 12px;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.oklch-control input {
+	flex: 1;
+	max-width: 320px;
+}
+
+.oklch-control output {
+	min-width: 3em;
+	font-family: monospace;
+	font-weight: 700;
+}
+
+.oklch-demo h3 {
+	margin: 0 0 8px;
+	font-family: monospace;
+	font-size: 0.9rem;
+}
+
+.oklch-strip {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	gap: 4px;
+	margin: 0 0 20px;
+	padding: 0;
+	list-style: none;
+}
+
+.oklch-strip li {
+	display: grid;
+	place-items: center;
+	aspect-ratio: 1;
+	border-radius: 6px;
+	color: white;
+	text-shadow: 0 0 3px rgb(0 0 0 / 0.8);
+	font-size: 0.75rem;
+}
+
+.oklch-hsl li {
+	background: hsl(var(--h) 100% var(--l));
+}
+
+/* @key */
+/* l（明るさ）と c（鮮やかさ）をそろえて、h（色相）だけを変える */
+.oklch-oklch li {
+	background: oklch(var(--l) 0.15 var(--h));
+}
+/* @end */

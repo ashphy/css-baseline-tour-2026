@@ -58,6 +58,13 @@ export const features: Feature[] = [
 		summary: '文字の上下にある余分な空きを削り、見た目の位置をそろえる',
 		mdn: 'https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Properties/text-box',
 	},
+	{
+		slug: 'color',
+		title: 'oklch と新しい色の関数',
+		status: 'Baseline 2023〜2026',
+		summary: 'oklch を土台に、元の色から明るさや透明度を変えた色や、読みやすい文字色を作る',
+		mdn: 'https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Values/color_value/oklch',
+	},
 ];
 
 export function url(path = '') {

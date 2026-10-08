@@ -1,0 +1,48 @@
+---
+import FeatureLayout from '../layouts/FeatureLayout.astro';
+import oklchHtml from '../demos/color/oklch/demo.html?raw';
+import oklchCss from '../demos/color/oklch/style.css?raw';
+import oklchJs from '../demos/color/oklch/script.js?raw';
+import relativeHtml from '../demos/color/relative/demo.html?raw';
+import relativeCss from '../demos/color/relative/style.css?raw';
+import relativeJs from '../demos/color/relative/script.js?raw';
+import contrastHtml from '../demos/color/contrast/demo.html?raw';
+import contrastCss from '../demos/color/contrast/style.css?raw';
+import contrastJs from '../demos/color/contrast/script.js?raw';
+
+const demos = [
+	{
+		id: 'oklch',
+		label: 'oklch',
+		html: oklchHtml,
+		css: oklchCss,
+		js: oklchJs,
+		points: [
+			{ name: 'oklch(l c h)', description: '明るさ（l）・鮮やかさ（c）・色相（h）で色を指定する。人の目に見える明るさに近い尺度なので、色相を変えても明るさがそろう（Baseline 2023）' },
+		],
+	},
+	{
+		id: 'relative',
+		label: '色の派生',
+		html: relativeHtml,
+		css: relativeCss,
+		js: relativeJs,
+		points: [
+			{ name: 'oklch(from …)', description: '相対カラー構文。元の色を l・c・h に分解し、calc() で計算し直した色を作る（Baseline 2024）' },
+			{ name: 'alpha(from … / 0.4)', description: '元の色の透明度だけを変える（Baseline 2026）' },
+		],
+	},
+	{
+		id: 'contrast',
+		label: '文字色の自動選択',
+		html: contrastHtml,
+		css: contrastCss,
+		js: contrastJs,
+		points: [
+			{ name: 'contrast-color()', description: '背景色に対して読みやすい文字色を、白か黒から自動で選ぶ（Baseline 2026）' },
+		],
+	},
+];
+---
+
+<FeatureLayout slug="color" demos={demos} />

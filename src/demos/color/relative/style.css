@@ -1,0 +1,62 @@
+.relative-control {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	margin-bottom: 16px;
+}
+
+.relative-swatches {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 12px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.relative-swatches li {
+	display: grid;
+	place-items: end start;
+	height: 96px;
+	padding: 8px 10px;
+	border-radius: 12px;
+	color: white;
+	font-size: 0.85rem;
+	font-weight: 700;
+	text-shadow: 0 1px 2px rgb(0 0 0 / 0.4);
+}
+
+.relative-base {
+	background: var(--base);
+}
+
+/* 半透明が分かるよう、市松模様の上に重ねる */
+.relative-alpha {
+	background:
+		linear-gradient(var(--alpha-color), var(--alpha-color)),
+		repeating-conic-gradient(#ddd 0 25%, white 0 50%) 0 0 / 16px 16px;
+}
+
+/* @key */
+/* from で元の色を分解し、l・c・h を計算し直して新しい色を作る */
+.relative-lighter {
+	background: oklch(from var(--base) calc(l + 0.2) c h);
+}
+
+.relative-darker {
+	background: oklch(from var(--base) calc(l - 0.2) c h);
+}
+
+.relative-muted {
+	background: oklch(from var(--base) l calc(c * 0.3) h);
+}
+
+.relative-complement {
+	background: oklch(from var(--base) l c calc(h + 180));
+}
+
+/* 透明度だけを変える */
+.relative-alpha {
+	--alpha-color: alpha(from var(--base) / 0.4);
+}
+/* @end */

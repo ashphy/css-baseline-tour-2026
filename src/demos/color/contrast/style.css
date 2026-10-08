@@ -1,0 +1,39 @@
+.contrast-control {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	margin-bottom: 16px;
+}
+
+.contrast-button {
+	padding: 14px 28px;
+	border: 0;
+	border-radius: 999px;
+	font: inherit;
+	font-size: 1.25rem;
+	font-weight: 700;
+}
+
+.contrast-list {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 8px;
+	margin: 24px 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.contrast-list li {
+	padding: 16px;
+	border-radius: 10px;
+	font-family: monospace;
+	font-weight: 700;
+}
+
+/* @key */
+/* 背景色に対して読みやすい文字色（白か黒）を自動で選ぶ */
+:is(.contrast-button, .contrast-list li) {
+	background: var(--bg);
+	color: contrast-color(var(--bg));
+}
+/* @end */
