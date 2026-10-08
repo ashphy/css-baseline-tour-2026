@@ -1,43 +1,79 @@
-# Astro Starter Kit: Minimal
+# CSS Baseline Tour 2026
+
+2025年以降に Baseline になった CSS の機能と、もうすぐ使えそうな機能を、触りながら紹介するサイトです。30分程度の発表で、聞き手が手元で操作しながら聞くことを想定しています。
+
+公開URL: https://ashphy.com/css-baseline-tour-2026/
+
+## 紹介している機能
+
+| 機能 | Baseline |
+| --- | --- |
+| View Transitions | Baseline 2025 |
+| Popover | Baseline 2025 |
+| Custom Highlight API | Baseline 2026 |
+| Container style queries | Baseline 2026 |
+| field-sizing | Baseline 2026 |
+| text-autospace | 一部 Baseline 2025（normal / no-autospace） |
+| text-box | Baseline 未達（Chrome・Safari） |
+
+紹介する機能を選ぶための候補一覧は [docs/candidates.md](docs/candidates.md) にあります。
+
+## ページの構成
+
+1機能1ページです。左にデモ、右にコードを並べます。
+
+- 左端の目次から各ページへ移動できます。← → キーでも前後のページへ移動できます
+- デモが複数あるページは、タブで切り替えます
+- コード欄には、デモのソースのうち重要な部分だけを表示します。その前に、使っている機能の一言解説を並べます
+
+## 開発
+
+[mise](https://mise.jdx.dev/) で pnpm の版を固定しています。
 
 ```sh
-pnpm create astro@latest -- --template minimal
+mise install
+pnpm install
+pnpm dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+| コマンド | 内容 |
+| --- | --- |
+| `pnpm dev` | 開発サーバーを `http://localhost:4321/css-baseline-tour-2026/` で起動する |
+| `pnpm build` | `dist/` にビルドする |
+| `pnpm preview` | ビルド結果を確認する |
 
-## 🚀 Project Structure
+## 機能のページを追加する
 
-Inside of your Astro project, you'll see the following folders and files:
+1. `src/features.ts` の `features` に機能を追加する。並び順がそのまま発表の順番になる
+2. `src/demos/<機能>/<デモ>/` に `demo.html`・`style.css`・必要なら `script.js` を置く
+3. `src/pages/<機能>.astro` で、デモのファイルを `?raw` で読み込み、`FeatureLayout` に渡す
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+デモのファイルは、ページへの適用とコード欄の表示の両方に使います。CSS の新しい構文がビルドで書き換えられないよう、加工せずにページに埋め込んでいます。
+
+### コード欄に出す範囲
+
+デモのソースで、コード欄に出したい範囲を `@key` と `@end` のコメントで囲みます。範囲の指定がない言語は、コード欄に表示しません。
+
+```css
+/* @key */
+.card {
+	view-transition-class: card;
+}
+/* @end */
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+JavaScript では `// @key` と `// @end`、HTML では `<!-- @key -->` と `<!-- @end -->` を使います。
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### 使っている機能の解説
 
-Any static assets, like images, can be placed in the `public/` directory.
+各ページのデモに `points` を渡すと、コード欄の先頭に名前と一言の解説を並べます。
 
-## 🧞 Commands
+```js
+points: [
+	{ name: 'view-transition-class', description: '複数の要素にまとめてスタイルを当てるためのクラス名' },
+],
+```
 
-All commands are run from the root of the project, from a terminal:
+## 公開
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+`main` へ push すると、GitHub Actions がビルドして GitHub Pages に公開します（`.github/workflows/deploy.yml`）。
