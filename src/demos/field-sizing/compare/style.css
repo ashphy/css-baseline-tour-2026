@@ -1,7 +1,23 @@
 .sizing-note {
+	display: flex;
+	gap: 12px;
+	align-items: baseline;
 	margin: 0 0 16px;
-	color: #5f6368;
+	padding: 10px 16px;
+	border-left: 4px solid #2050b8;
+	border-radius: 4px;
+	background: #eef2fb;
 	font-size: 0.9rem;
+}
+
+.sizing-note-label {
+	flex: none;
+	padding: 2px 8px;
+	border-radius: 4px;
+	background: #2050b8;
+	color: white;
+	font-size: 0.75rem;
+	font-weight: bold;
 }
 
 .sizing-grid {
