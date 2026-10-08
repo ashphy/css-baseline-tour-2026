@@ -1,39 +1,91 @@
-<div class="oklch-demo" style="--l: 60%">
-	<p class="oklch-note">色相（h）だけを 30 度ずつ変えた12色です。スライダーの値を、hsl と oklch の明るさに同じ数値で入れます。</p>
-	<label class="oklch-control">
-		明るさ
-		<input type="range" name="lightness" min="0" max="100" value="60" />
-		<output class="oklch-value">60%</output>
-	</label>
-	<h3>hsl(h 100% <span class="oklch-value">60%</span>)</h3>
-	<ul class="oklch-strip oklch-hsl">
-		<li style="--h: 0">0</li>
-		<li style="--h: 30">30</li>
-		<li style="--h: 60">60</li>
-		<li style="--h: 90">90</li>
-		<li style="--h: 120">120</li>
-		<li style="--h: 150">150</li>
-		<li style="--h: 180">180</li>
-		<li style="--h: 210">210</li>
-		<li style="--h: 240">240</li>
-		<li style="--h: 270">270</li>
-		<li style="--h: 300">300</li>
-		<li style="--h: 330">330</li>
-	</ul>
-	<h3>oklch(<span class="oklch-value">60%</span> 0.15 h)</h3>
-	<ul class="oklch-strip oklch-oklch">
-		<li style="--h: 0">0</li>
-		<li style="--h: 30">30</li>
-		<li style="--h: 60">60</li>
-		<li style="--h: 90">90</li>
-		<li style="--h: 120">120</li>
-		<li style="--h: 150">150</li>
-		<li style="--h: 180">180</li>
-		<li style="--h: 210">210</li>
-		<li style="--h: 240">240</li>
-		<li style="--h: 270">270</li>
-		<li style="--h: 300">300</li>
-		<li style="--h: 330">330</li>
-	</ul>
-	<p class="oklch-note">同じ数値でも、hsl は黄色や水色が明るく、青や紫が暗く見えます。oklch は人の目に見える明るさがそろいます。</p>
+<div class="oklch-demo">
+	<section class="oklch-step">
+		<p class="oklch-step-label">STEP 1</p>
+		<h3 class="oklch-step-title">これまでは rgb か hsl</h3>
+		<p>これまでの CSS では、色を rgb か hsl で指定してきました。下のスライダーで色を選んでみてください。</p>
+		<p>hsl は色相を回すだけで色を選べるので扱いやすい形です。</p>
+		<div class="oklch-picker oklch-picker-rgb" style="--r: 58; --g: 91; --b: 217">
+			<div class="oklch-swatch"></div>
+			<div class="oklch-sliders">
+				<code>rgb(<span data-value="r">58</span> <span data-value="g">91</span> <span data-value="b">217</span>)</code>
+				<label>r <input type="range" name="r" min="0" max="255" value="58" /><output data-value="r">58</output></label>
+				<label>g <input type="range" name="g" min="0" max="255" value="91" /><output data-value="g">91</output></label>
+				<label>b <input type="range" name="b" min="0" max="255" value="217" /><output data-value="b">217</output></label>
+			</div>
+		</div>
+		<div class="oklch-picker oklch-picker-hsl" style="--h: 228; --s: 68; --l: 54">
+			<div class="oklch-swatch"></div>
+			<div class="oklch-sliders">
+				<code>hsl(<span data-value="h">228</span> <span data-value="s">68</span>% <span data-value="l">54</span>%)</code>
+				<label>h <input type="range" name="h" min="0" max="360" value="228" /><output data-value="h">228</output></label>
+				<label>s <input type="range" name="s" min="0" max="100" value="68" /><output data-value="s">68</output></label>
+				<label>l <input type="range" name="l" min="0" max="100" value="54" /><output data-value="l">54</output></label>
+			</div>
+		</div>
+	</section>
+
+	<section class="oklch-step">
+		<p class="oklch-step-label">STEP 2</p>
+		<h3 class="oklch-step-title">hsl は明るさがそろわない</h3>
+		<p>色相（h）だけを 30 度ずつ変えた 12 色です。明度の数値は全部同じなのに、<strong>黄色や水色は明るく、青や紫は暗く</strong>見えます。</p>
+		<div class="oklch-aside">
+			<p class="oklch-aside-title">灰色の行の見方</p>
+			<p>それぞれの色を白黒にしたときの明るさ（0〜100）です。hsl では色相によってばらつきます。</p>
+		</div>
+		<div class="oklch-compare oklch-hsl" style="--l: 60%">
+			<label class="oklch-control">
+				明るさ
+				<input type="range" name="lightness" min="0" max="100" value="60" />
+				<output class="oklch-value">60%</output>
+			</label>
+			<code>hsl(h 100% <span class="oklch-value">60%</span>)</code>
+			<ul class="oklch-strip">
+				<li style="--h: 0"><span class="oklch-color">0</span><span class="oklch-gray"></span></li>
+				<li style="--h: 30"><span class="oklch-color">30</span><span class="oklch-gray"></span></li>
+				<li style="--h: 60"><span class="oklch-color">60</span><span class="oklch-gray"></span></li>
+				<li style="--h: 90"><span class="oklch-color">90</span><span class="oklch-gray"></span></li>
+				<li style="--h: 120"><span class="oklch-color">120</span><span class="oklch-gray"></span></li>
+				<li style="--h: 150"><span class="oklch-color">150</span><span class="oklch-gray"></span></li>
+				<li style="--h: 180"><span class="oklch-color">180</span><span class="oklch-gray"></span></li>
+				<li style="--h: 210"><span class="oklch-color">210</span><span class="oklch-gray"></span></li>
+				<li style="--h: 240"><span class="oklch-color">240</span><span class="oklch-gray"></span></li>
+				<li style="--h: 270"><span class="oklch-color">270</span><span class="oklch-gray"></span></li>
+				<li style="--h: 300"><span class="oklch-color">300</span><span class="oklch-gray"></span></li>
+				<li style="--h: 330"><span class="oklch-color">330</span><span class="oklch-gray"></span></li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="oklch-step">
+		<p class="oklch-step-label">STEP 3</p>
+		<h3 class="oklch-step-title">oklch なら明るさがそろう</h3>
+		<p>同じ数値を oklch の明るさに入れると、灰色の行がすべて同じ明るさになります。oklch は<strong>人の目に見える明るさに近い尺度</strong>で色を決めるからです。</p>
+		<dl class="oklch-terms">
+			<div><dt>l</dt><dd>明るさ（0% = 黒、100% = 白）</dd></div>
+			<div><dt>c</dt><dd>鮮やかさ（0 で灰色）</dd></div>
+			<div><dt>h</dt><dd>色相（0〜360 度）</dd></div>
+		</dl>
+		<div class="oklch-compare oklch-oklch" style="--l: 60%">
+			<label class="oklch-control">
+				明るさ
+				<input type="range" name="lightness" min="0" max="100" value="60" />
+				<output class="oklch-value">60%</output>
+			</label>
+			<code>oklch(<span class="oklch-value">60%</span> 0.15 h)</code>
+			<ul class="oklch-strip">
+				<li style="--h: 0"><span class="oklch-color">0</span><span class="oklch-gray"></span></li>
+				<li style="--h: 30"><span class="oklch-color">30</span><span class="oklch-gray"></span></li>
+				<li style="--h: 60"><span class="oklch-color">60</span><span class="oklch-gray"></span></li>
+				<li style="--h: 90"><span class="oklch-color">90</span><span class="oklch-gray"></span></li>
+				<li style="--h: 120"><span class="oklch-color">120</span><span class="oklch-gray"></span></li>
+				<li style="--h: 150"><span class="oklch-color">150</span><span class="oklch-gray"></span></li>
+				<li style="--h: 180"><span class="oklch-color">180</span><span class="oklch-gray"></span></li>
+				<li style="--h: 210"><span class="oklch-color">210</span><span class="oklch-gray"></span></li>
+				<li style="--h: 240"><span class="oklch-color">240</span><span class="oklch-gray"></span></li>
+				<li style="--h: 270"><span class="oklch-color">270</span><span class="oklch-gray"></span></li>
+				<li style="--h: 300"><span class="oklch-color">300</span><span class="oklch-gray"></span></li>
+				<li style="--h: 330"><span class="oklch-color">330</span><span class="oklch-gray"></span></li>
+			</ul>
+		</div>
+	</section>
 </div>

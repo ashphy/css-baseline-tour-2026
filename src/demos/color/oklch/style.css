@@ -1,59 +1,252 @@
-.oklch-note {
-	margin: 0 0 16px;
-	color: #5f6368;
+.oklch-demo {
+	line-height: 1.8;
+}
+
+.oklch-demo p {
+	margin: 0 0 12px;
+}
+
+.oklch-demo code {
+	font-family: var(--font-mono);
+	font-size: 0.85rem;
+	font-weight: 600;
+}
+
+.oklch-step {
+	display: grid;
+	gap: 4px;
+	padding-bottom: 32px;
+}
+
+.oklch-step + .oklch-step {
+	padding-top: 32px;
+	border-top: 1px solid var(--color-border);
+}
+
+.oklch-demo .oklch-step-label {
+	margin: 0;
+	color: var(--color-accent);
+	font-family: var(--font-mono);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+}
+
+.oklch-step-title {
+	margin: 0 0 8px;
+	font-size: 1.4rem;
+}
+
+.oklch-aside {
+	margin-bottom: 16px;
+	padding: 12px 16px;
+	border-radius: 8px;
+	background: var(--color-bg);
 	font-size: 0.9rem;
 }
 
-.oklch-control {
-	display: flex;
-	gap: 12px;
-	align-items: center;
-	margin-bottom: 20px;
+.oklch-demo .oklch-aside p {
+	margin: 0;
 }
 
-.oklch-control input {
-	flex: 1;
-	max-width: 320px;
-}
-
-.oklch-control output {
-	min-width: 3em;
-	font-family: monospace;
+.oklch-demo .oklch-aside-title {
 	font-weight: 700;
 }
 
-.oklch-demo h3 {
-	margin: 0 0 8px;
-	font-family: monospace;
+.oklch-terms {
+	display: grid;
+	gap: 4px;
+	margin: 0 0 16px;
+}
+
+.oklch-terms div {
+	display: grid;
+	grid-template-columns: 2em 1fr;
+}
+
+.oklch-terms dt {
+	font-family: var(--font-mono);
+	font-weight: 600;
+}
+
+.oklch-terms dd {
+	margin: 0;
+}
+
+.oklch-picker,
+.oklch-compare {
+	margin-top: 8px;
+	padding: 16px;
+	border: 1px solid var(--color-border);
+	border-radius: 12px;
+	background: white;
+}
+
+.oklch-picker {
+	display: grid;
+	grid-template-columns: 96px 1fr;
+	gap: 16px;
+	align-items: center;
+}
+
+.oklch-swatch {
+	aspect-ratio: 1;
+	border-radius: 8px;
+	background: var(--color);
+}
+
+.oklch-sliders {
+	display: grid;
+	gap: 2px;
+}
+
+.oklch-sliders label {
+	display: grid;
+	grid-template-columns: 1em 1fr 2.5em;
+	gap: 12px;
+	align-items: center;
+	font-family: var(--font-mono);
+	font-size: 0.8rem;
+}
+
+.oklch-sliders output {
+	text-align: right;
+}
+
+.oklch-sliders input {
+	height: 10px;
+	margin: 0;
+	border-radius: 5px;
+	appearance: none;
+	background: var(--track);
+}
+
+.oklch-sliders input::-webkit-slider-thumb {
+	width: 16px;
+	height: 16px;
+	border: 2px solid white;
+	border-radius: 50%;
+	appearance: none;
+	background: transparent;
+	box-shadow: 0 0 0 1px rgb(0 0 0 / 0.5);
+}
+
+.oklch-sliders input::-moz-range-track {
+	background: transparent;
+}
+
+.oklch-sliders input::-moz-range-thumb {
+	box-sizing: border-box;
+	width: 16px;
+	height: 16px;
+	border: 2px solid white;
+	border-radius: 50%;
+	background: transparent;
+	box-shadow: 0 0 0 1px rgb(0 0 0 / 0.5);
+}
+
+/* スライダーの帯には、その値だけを動かしたときの色の変化を描く */
+.oklch-picker-rgb {
+	--color: rgb(var(--r) var(--g) var(--b));
+}
+
+.oklch-picker-rgb [name='r'] {
+	--track: linear-gradient(to right, rgb(0 var(--g) var(--b)), rgb(255 var(--g) var(--b)));
+}
+
+.oklch-picker-rgb [name='g'] {
+	--track: linear-gradient(to right, rgb(var(--r) 0 var(--b)), rgb(var(--r) 255 var(--b)));
+}
+
+.oklch-picker-rgb [name='b'] {
+	--track: linear-gradient(to right, rgb(var(--r) var(--g) 0), rgb(var(--r) var(--g) 255));
+}
+
+.oklch-picker-hsl {
+	--color: hsl(var(--h) calc(var(--s) * 1%) calc(var(--l) * 1%));
+}
+
+.oklch-picker-hsl [name='h'] {
+	--sl: calc(var(--s) * 1%) calc(var(--l) * 1%);
+	--track: linear-gradient(
+		to right,
+		hsl(0 var(--sl)),
+		hsl(60 var(--sl)),
+		hsl(120 var(--sl)),
+		hsl(180 var(--sl)),
+		hsl(240 var(--sl)),
+		hsl(300 var(--sl)),
+		hsl(360 var(--sl))
+	);
+}
+
+.oklch-picker-hsl [name='s'] {
+	--track: linear-gradient(to right, hsl(var(--h) 0% calc(var(--l) * 1%)), hsl(var(--h) 100% calc(var(--l) * 1%)));
+}
+
+.oklch-picker-hsl [name='l'] {
+	--track: linear-gradient(to right, black, hsl(var(--h) calc(var(--s) * 1%) 50%), white);
+}
+
+.oklch-compare {
+	display: grid;
+	gap: 12px;
+}
+
+.oklch-control {
+	display: grid;
+	grid-template-columns: auto 1fr 3em;
+	gap: 12px;
+	align-items: center;
 	font-size: 0.9rem;
+	font-weight: 600;
+}
+
+.oklch-control output {
+	font-family: var(--font-mono);
+	font-size: 0.85rem;
+	text-align: right;
 }
 
 .oklch-strip {
 	display: grid;
-	grid-template-columns: repeat(12, 1fr);
-	gap: 4px;
-	margin: 0 0 20px;
+	grid-template-columns: repeat(6, 1fr);
+	gap: 8px 6px;
+	margin: 0;
 	padding: 0;
 	list-style: none;
 }
 
 .oklch-strip li {
 	display: grid;
-	place-items: center;
-	aspect-ratio: 1;
-	border-radius: 6px;
-	color: white;
-	text-shadow: 0 0 3px rgb(0 0 0 / 0.8);
+	gap: 3px;
+	font-family: var(--font-mono);
 	font-size: 0.75rem;
+	text-align: center;
 }
 
-.oklch-hsl li {
+.oklch-color {
+	display: grid;
+	place-items: center;
+	height: 48px;
+	border-radius: 6px;
+	color: white;
+	font-weight: 600;
+	text-shadow: 0 0 3px rgb(0 0 0 / 0.8);
+}
+
+.oklch-gray {
+	border-radius: 4px;
+	line-height: 1.8;
+}
+
+.oklch-hsl .oklch-color {
 	background: hsl(var(--h) 100% var(--l));
 }
 
 /* @key */
 /* l（明るさ）と c（鮮やかさ）をそろえて、h（色相）だけを変える */
-.oklch-oklch li {
+.oklch-oklch .oklch-color {
 	background: oklch(var(--l) 0.15 var(--h));
 }
 /* @end */
