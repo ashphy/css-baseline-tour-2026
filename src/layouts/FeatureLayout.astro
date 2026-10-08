@@ -38,13 +38,17 @@ const tabCss = demos
 <BaseLayout title={`${feature.title} | CSS Baseline Tour 2026`}>
 	<div class="feature">
 		<nav id="toc" class="toc" popover aria-label="目次">
-			<a class="toc-home" href={url()}>CSS Baseline Tour 2026</a>
-			<ol>
+			<a class="toc-home" href={url()}>
+				<span>Talk</span>
+				CSS Baseline Tour 2026
+			</a>
+			<ol style={`--progress: ${(index / (features.length - 1)) * 100}%`}>
 				{
-					features.map((f) => (
-						<li>
+					features.map((f, i) => (
+						<li data-past={i < index || undefined}>
 							<a href={url(f.slug)} aria-current={f.slug === slug ? 'page' : undefined}>
 								{f.title}
+								<small>{f.status}</small>
 							</a>
 						</li>
 					))
@@ -58,6 +62,7 @@ const tabCss = demos
 				{prev ? <a href={url(prev.slug)} data-prev>← {prev.title}</a> : <span />}
 				{next ? <a href={url(next.slug)} data-next>{next.title} →</a> : <span />}
 			</nav>
+			<p class="step">STEP {index + 1} / {features.length}</p>
 			<h1>{feature.title}</h1>
 			<p class="lead">
 				<span class="status" data-limited={feature.status.includes('未達') || undefined}>{feature.status}</span>
@@ -145,7 +150,7 @@ const tabCss = demos
 <style>
 	.feature {
 		display: grid;
-		grid-template-columns: 220px minmax(0, 1fr);
+		grid-template-columns: 260px minmax(0, 1fr);
 		grid-template-rows: auto 1fr;
 		height: 100dvh;
 	}
@@ -158,7 +163,7 @@ const tabCss = demos
 		width: auto;
 		height: auto;
 		margin: 0;
-		padding: 20px 12px;
+		padding: 24px 16px;
 		overflow: auto;
 		border: 0;
 		border-right: 1px solid var(--color-border);
@@ -168,48 +173,94 @@ const tabCss = demos
 
 	.toc-home {
 		display: block;
-		margin: 0 8px 16px;
+		margin: 0 8px 24px;
 		color: var(--color-text);
 		font-weight: 700;
+		line-height: 1.4;
 		text-decoration: none;
 	}
 
+	.toc-home span {
+		display: block;
+		color: var(--color-muted);
+		font-family: var(--font-mono);
+		font-size: 0.75rem;
+		font-weight: 400;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	/* 発表の順番を路線図として表す。現在のページまでの線に色を付ける */
 	.toc ol {
+		position: relative;
+		display: grid;
+		gap: 2px;
 		margin: 0;
 		padding: 0;
 		list-style: none;
-		counter-reset: toc;
+	}
+
+	.toc ol::before {
+		content: '';
+		position: absolute;
+		top: 14px;
+		bottom: 14px;
+		left: 13px;
+		width: 3px;
+		background: linear-gradient(var(--color-accent) var(--progress), var(--color-border) 0);
 	}
 
 	.toc li a {
-		display: flex;
-		gap: 8px;
-		padding: 6px 8px;
-		border-radius: 8px;
+		position: relative;
+		display: grid;
+		gap: 2px;
+		padding: 6px 8px 6px 36px;
+		border-radius: var(--radius);
 		color: var(--color-text);
 		font-size: 0.9rem;
 		text-decoration: none;
-		counter-increment: toc;
 	}
 
 	.toc li a::before {
-		content: counter(toc);
-		min-width: 1.5em;
+		content: '';
+		position: absolute;
+		top: 9px;
+		left: 8px;
+		width: 13px;
+		height: 13px;
+		border: 3px solid var(--color-border);
+		border-radius: 50%;
+		background: var(--color-surface);
+	}
+
+	.toc li a small {
 		color: var(--color-muted);
-		text-align: right;
+		font-family: var(--font-mono);
+		font-size: 0.7rem;
 	}
 
 	.toc li a:hover {
 		background: var(--color-bg);
 	}
 
-	.toc li a[aria-current='page'] {
+	.toc li[data-past] a::before {
+		border-color: var(--color-accent);
 		background: var(--color-accent);
-		color: white;
+	}
+
+	.toc li a[aria-current='page'] {
+		background: var(--color-accent-soft);
+		font-weight: 600;
 	}
 
 	.toc li a[aria-current='page']::before {
-		color: inherit;
+		top: 7px;
+		left: 5px;
+		width: 19px;
+		height: 19px;
+		border-width: 5px;
+		border-color: var(--color-accent);
+		box-shadow: 0 0 0 3px var(--color-accent-soft);
 	}
 
 	.toc-button {
@@ -217,7 +268,9 @@ const tabCss = demos
 	}
 
 	.header {
-		padding: 16px 32px 12px;
+		display: grid;
+		gap: 8px;
+		padding: 16px 36px 20px;
 		border-bottom: 1px solid var(--color-border);
 		background: var(--color-surface);
 	}
@@ -225,39 +278,78 @@ const tabCss = demos
 	.pager {
 		display: flex;
 		justify-content: space-between;
-		font-size: 0.9rem;
+		font-family: var(--font-mono);
+		font-size: 0.8rem;
 	}
 
 	.pager a {
+		color: var(--color-muted);
 		text-decoration: none;
 	}
 
+	.pager a:hover {
+		color: var(--color-accent);
+	}
+
+	.step {
+		margin: 4px 0 0;
+		color: var(--color-accent);
+		font-family: var(--font-mono);
+		font-size: 0.8rem;
+		letter-spacing: 0.06em;
+	}
+
 	h1 {
-		margin: 8px 0 4px;
-		font-size: 2rem;
+		margin: 0;
+		font-size: 2.1rem;
+		letter-spacing: -0.01em;
+		text-wrap: balance;
 	}
 
 	.lead {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
-		gap: 12px;
+		gap: 8px 14px;
 		margin: 0;
 		color: var(--color-muted);
 	}
 
 	.status {
-		padding: 2px 10px;
-		border-radius: 999px;
-		background: #e3f5e1;
-		color: #1e6b2a;
-		font-size: 0.85rem;
-		font-weight: 700;
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		padding: 3px 10px 3px 6px;
+		border: 1px solid color-mix(in oklch, var(--color-ok) 30%, white);
+		border-radius: var(--radius);
+		background: var(--color-ok-soft);
+		color: var(--color-ok);
+		font-family: var(--font-mono);
+		font-size: 0.8rem;
+		font-weight: 600;
+	}
+
+	.status::before {
+		content: '✓';
+		display: grid;
+		place-items: center;
+		width: 16px;
+		height: 16px;
+		border-radius: 2px;
+		background: var(--color-ok);
+		color: white;
+		font-size: 0.7rem;
 	}
 
 	.status[data-limited] {
-		background: #fdecd8;
-		color: #9a4a0a;
+		border-color: color-mix(in oklch, var(--color-warn) 30%, white);
+		background: var(--color-warn-soft);
+		color: var(--color-warn);
+	}
+
+	.status[data-limited]::before {
+		content: '!';
+		background: var(--color-warn);
 	}
 
 	.body {
@@ -269,7 +361,14 @@ const tabCss = demos
 	.pane {
 		min-height: 0;
 		overflow: auto;
-		padding: 24px 32px;
+		padding: 24px 36px;
+	}
+
+	/* デモを方眼の上に置き、試料として見せる */
+	.demo-pane {
+		background-color: var(--color-bg);
+		background-image: radial-gradient(color-mix(in oklch, var(--color-border) 70%, var(--color-muted)) 1px, transparent 1px);
+		background-size: 16px 16px;
 	}
 
 	.code-pane {
@@ -283,6 +382,7 @@ const tabCss = demos
 		gap: 4px;
 		margin-bottom: 24px;
 		border-bottom: 1px solid var(--color-border);
+		background: var(--color-bg);
 	}
 
 	.tabs[hidden] {
@@ -291,10 +391,11 @@ const tabCss = demos
 
 	.tabs label {
 		margin-bottom: -1px;
-		padding: 8px 16px;
-		border-bottom: 3px solid transparent;
+		padding: 8px 14px;
+		border-bottom: 2px solid transparent;
 		color: var(--color-muted);
-		font-weight: 700;
+		font-size: 0.9rem;
+		font-weight: 600;
 		cursor: pointer;
 	}
 
@@ -325,7 +426,7 @@ const tabCss = demos
 	:global(:where(.demo button)) {
 		padding: 6px 14px;
 		border: 1px solid var(--color-border);
-		border-radius: 8px;
+		border-radius: var(--radius);
 		background: var(--color-surface);
 		color: inherit;
 		font: inherit;
@@ -338,30 +439,37 @@ const tabCss = demos
 
 	.points {
 		display: grid;
-		gap: 10px;
+		gap: 16px;
 		margin: 0;
 	}
 
+	.points > div {
+		display: grid;
+		gap: 4px;
+	}
+
 	.points dt code {
-		padding: 2px 6px;
-		border-radius: 4px;
-		background: #eef1fb;
 		color: var(--color-accent);
-		font-size: 0.9rem;
-		font-weight: 700;
+		font-family: var(--font-mono);
+		font-size: 0.85rem;
+		font-weight: 600;
 	}
 
 	.points dd {
-		margin: 4px 0 0;
+		margin: 0;
 		color: var(--color-muted);
-		font-size: 0.9rem;
+		font-size: 0.85rem;
+		line-height: 1.6;
 	}
 
 	.code h2 {
-		margin: 20px 0 8px;
+		margin: 24px 0 10px;
 		color: var(--color-muted);
-		font-size: 0.85rem;
-		letter-spacing: 0.05em;
+		font-family: var(--font-mono);
+		font-size: 1rem;
+		font-weight: 600;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
 	}
 
 	.code h2:first-child {
@@ -370,11 +478,12 @@ const tabCss = demos
 
 	.code :global(pre) {
 		margin: 0;
-		padding: 16px;
+		padding: 14px 16px;
 		border: 1px solid var(--color-border);
 		border-radius: var(--radius);
-		font-size: 0.9rem;
-		line-height: 1.6;
+		font-family: var(--font-mono);
+		font-size: 0.85rem;
+		line-height: 1.7;
 		tab-size: 2;
 	}
 
@@ -388,7 +497,7 @@ const tabCss = demos
 		.toc {
 			position: fixed;
 			inset: 0 auto 0 0;
-			width: min(280px, 80vw);
+			width: min(300px, 85vw);
 			border-right: 1px solid var(--color-border);
 			box-shadow: 0 0 24px rgb(0 0 0 / 0.15);
 		}
@@ -403,15 +512,19 @@ const tabCss = demos
 
 		.toc-button {
 			display: inline-block;
-			margin-bottom: 8px;
+			justify-self: start;
 			padding: 4px 12px;
 			border: 1px solid var(--color-border);
-			border-radius: 8px;
+			border-radius: var(--radius);
 			background: var(--color-surface);
 			color: inherit;
 			font: inherit;
 			font-size: 0.9rem;
 			cursor: pointer;
+		}
+
+		.header {
+			padding: 16px;
 		}
 
 		.body {

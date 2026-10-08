@@ -15,6 +15,12 @@ const { title } = Astro.props;
 		<link rel="icon" href={url('favicon.ico')} />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans+JP:wght@400;600;700&display=swap"
+		/>
 		<title>{title}</title>
 	</head>
 	<body>
@@ -24,14 +30,20 @@ const { title } = Astro.props;
 
 <style is:global>
 	:root {
-		--color-bg: #fafaf7;
+		--color-bg: #f5f6f8;
 		--color-surface: #ffffff;
-		--color-text: #1d1d1f;
-		--color-muted: #5f6368;
-		--color-border: #e2e2dc;
-		--color-accent: #3a5bd9;
-		--radius: 12px;
-		font-family: system-ui, 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+		--color-text: #18202c;
+		--color-muted: #5a6474;
+		--color-border: #dde1e8;
+		--color-accent: #2050b8;
+		--color-accent-soft: #eef2fb;
+		--color-ok: #18794e;
+		--color-ok-soft: #eaf6ef;
+		--color-warn: #9a4a0a;
+		--color-warn-soft: #fdecd8;
+		--radius: 4px;
+		--font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+		font-family: 'IBM Plex Sans JP', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
 		color: var(--color-text);
 		background: var(--color-bg);
 	}
