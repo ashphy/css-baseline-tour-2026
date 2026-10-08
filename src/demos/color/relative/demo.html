@@ -1,14 +1,36 @@
 <div class="relative-demo" style="--base: #3a5bd9">
-	<label class="relative-control">
-		元の色
-		<input type="color" name="base" value="#3a5bd9" />
-	</label>
-	<ul class="relative-swatches">
-		<li class="relative-base">元の色</li>
-		<li class="relative-lighter">明るく</li>
-		<li class="relative-darker">暗く</li>
-		<li class="relative-muted">くすませる</li>
-		<li class="relative-complement">反対の色相</li>
-		<li class="relative-alpha">半透明</li>
-	</ul>
+	<section class="relative-step">
+		<p class="relative-step-label">STEP 1</p>
+		<h3 class="relative-step-title">元の色から色を作る</h3>
+		<p><code>oklch(from 元の色 l c h)</code> と書くと、元の色を l・c・h に分解できます。<strong>l・c・h を calc() で計算し直す</strong>と、明るさや鮮やかさを変えた色が作れます。</p>
+		<p>元の色を変えると、ほかの色もすべて一緒に変わります。</p>
+		<div class="relative-card">
+			<label class="relative-control">
+				元の色
+				<input type="color" name="base" value="#3a5bd9" />
+			</label>
+			<ul class="relative-swatches">
+				<li class="relative-base">元の色</li>
+				<li class="relative-lighter">明るく</li>
+				<li class="relative-darker">暗く</li>
+				<li class="relative-muted">くすませる</li>
+				<li class="relative-complement">反対の色相</li>
+				<li class="relative-alpha">半透明</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="relative-step">
+		<p class="relative-step-label">STEP 2</p>
+		<h3 class="relative-step-title">ボタンの状態の色を作る</h3>
+		<p>ボタンのホバー・押し込み・フォーカス・無効の色を、<strong>元の色 1 つから作れます</strong>。transition を付ければ色の変化がアニメーションになります。</p>
+		<div class="relative-aside">
+			<p class="relative-aside-title">試し方</p>
+			<p>ボタンにマウスを乗せる・押す・Tab キーでフォーカスを当ててみてください。STEP 1 で元の色を変えると、ボタンの色も変わります。</p>
+		</div>
+		<div class="relative-card relative-buttons">
+			<button type="button" class="relative-button">保存する</button>
+			<button type="button" class="relative-button" disabled>保存する（無効）</button>
+		</div>
+	</section>
 </div>
