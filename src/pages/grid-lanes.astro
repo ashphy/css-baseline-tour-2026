@@ -1,0 +1,21 @@
+---
+import FeatureLayout from '../layouts/FeatureLayout.astro';
+import compareHtml from '../demos/grid-lanes/compare/demo.html?raw';
+import compareCss from '../demos/grid-lanes/compare/style.css?raw';
+
+const demos = [
+	{
+		id: 'compare',
+		label: '比較',
+		html: compareHtml,
+		css: compareCss,
+		points: [
+			{ name: 'display: grid-lanes', description: '片方の向きは Grid と同じ列、もう片方の向きは行の区切りなしで詰めて並べる。いわゆる Masonry レイアウト' },
+			{ name: 'grid-template-columns', description: '列の数と幅は、通常の Grid と同じ書き方で決める。grid-template-rows を指定すると、横向きに詰めて並べる' },
+			{ name: 'display: grid; display: grid-lanes;', description: '対応していないブラウザーは後の宣言を無視するので、通常の Grid で表示される' },
+		],
+	},
+];
+---
+
+<FeatureLayout slug="grid-lanes" demos={demos} />

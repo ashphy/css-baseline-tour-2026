@@ -1,0 +1,49 @@
+<div class="lanes-demo">
+	<p class="lanes-unsupported">このブラウザーは <code>display: grid-lanes</code> に対応していないため、STEP 2 も通常の Grid で表示しています。Safari 26.4 以降で開くと、詰めて並ぶ様子を確認できます。</p>
+
+	<section class="lanes-step">
+		<p class="lanes-step-label">STEP 1</p>
+		<h3 class="lanes-step-title">Grid では行の高さがそろう</h3>
+		<p>高さの違うカードを <code>display: grid</code> で並べました。同じ行のカードは、その行で一番高いカードに合わせて場所を取るので、低いカードの下に空きができます。右下の角をドラッグすると、幅を変えられます。</p>
+		<div class="lanes-box">
+			<div class="lanes-grid lanes-normal">
+				<div class="lanes-card" style="height: 6em">1</div>
+				<div class="lanes-card" style="height: 9em">2</div>
+				<div class="lanes-card" style="height: 5em">3</div>
+				<div class="lanes-card" style="height: 11em">4</div>
+				<div class="lanes-card" style="height: 7em">5</div>
+				<div class="lanes-card" style="height: 8em">6</div>
+				<div class="lanes-card" style="height: 5em">7</div>
+				<div class="lanes-card" style="height: 10em">8</div>
+				<div class="lanes-card" style="height: 6em">9</div>
+				<div class="lanes-card" style="height: 9em">10</div>
+				<div class="lanes-card" style="height: 7em">11</div>
+				<div class="lanes-card" style="height: 5em">12</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="lanes-step">
+		<p class="lanes-step-label">STEP 2</p>
+		<h3 class="lanes-step-title">空きを詰めて並べる</h3>
+		<p><code>display: grid-lanes</code> にすると、行の区切りがなくなります。カードは番号の順に、そのとき一番上が空いている列へ積まれます。列の数は Grid と同じく <code>grid-template-columns</code> で決めます。</p>
+		<div class="lanes-box">
+			<!-- @key -->
+			<div class="lanes-grid lanes-masonry">
+				<div class="lanes-card" style="height: 6em">1</div>
+				<div class="lanes-card" style="height: 9em">2</div>
+				<div class="lanes-card" style="height: 5em">3</div>
+				<div class="lanes-card" style="height: 11em">4</div>
+				<div class="lanes-card" style="height: 7em">5</div>
+				<div class="lanes-card" style="height: 8em">6</div>
+				<div class="lanes-card" style="height: 5em">7</div>
+				<div class="lanes-card" style="height: 10em">8</div>
+				<div class="lanes-card" style="height: 6em">9</div>
+				<div class="lanes-card" style="height: 9em">10</div>
+				<div class="lanes-card" style="height: 7em">11</div>
+				<div class="lanes-card" style="height: 5em">12</div>
+			</div>
+			<!-- @end -->
+		</div>
+	</section>
+</div>

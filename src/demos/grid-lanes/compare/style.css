@@ -1,0 +1,99 @@
+.lanes-demo {
+	line-height: 1.8;
+}
+
+.lanes-demo p {
+	margin: 0 0 12px;
+}
+
+.lanes-demo code {
+	font-family: var(--font-mono);
+	font-size: 0.85rem;
+	font-weight: 600;
+}
+
+.lanes-step {
+	display: grid;
+	gap: 4px;
+	padding-bottom: 32px;
+}
+
+.lanes-step + .lanes-step {
+	padding-top: 32px;
+	border-top: 1px solid var(--color-border);
+}
+
+.lanes-demo .lanes-step-label {
+	margin: 0;
+	color: var(--color-accent);
+	font-family: var(--font-mono);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+}
+
+.lanes-step-title {
+	margin: 0 0 8px;
+	font-size: 1.4rem;
+}
+
+.lanes-demo .lanes-unsupported {
+	margin-bottom: 24px;
+	padding: 12px 16px;
+	border: 1px solid color-mix(in oklch, var(--color-warn) 30%, white);
+	border-radius: var(--radius);
+	background: var(--color-warn-soft);
+	color: var(--color-warn);
+	font-size: 0.9rem;
+}
+
+@supports (display: grid-lanes) {
+	.lanes-demo .lanes-unsupported {
+		display: none;
+	}
+}
+
+/* 右下の角をドラッグして幅を変えられる箱 */
+.lanes-box {
+	width: 100%;
+	min-width: 12em;
+	max-width: 100%;
+	margin: 8px 0 16px;
+	padding: 16px;
+	overflow: hidden;
+	resize: horizontal;
+	border: 1px dashed var(--color-border);
+	border-radius: 12px;
+	background: white;
+}
+
+.lanes-card {
+	display: grid;
+	place-items: center;
+	border-radius: 8px;
+	background: #c5cae9;
+	color: #283593;
+	font-size: 1.4rem;
+	font-weight: 700;
+}
+
+.lanes-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(7em, 1fr));
+	gap: 12px;
+}
+
+/* 行の高さに引き伸ばさず、カード自身の高さで表示する */
+.lanes-normal {
+	align-items: start;
+}
+
+/* @key */
+.lanes-masonry {
+	/* 対応していないブラウザーでは通常の Grid になる */
+	display: grid;
+	display: grid-lanes;
+	grid-template-columns: repeat(auto-fill, minmax(7em, 1fr));
+	gap: 12px;
+}
+/* @end */

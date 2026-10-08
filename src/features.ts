@@ -80,6 +80,13 @@ export const features: Feature[] = [
 		mdn: 'https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Properties/row-rule',
 	},
 	{
+		slug: 'grid-lanes',
+		title: 'Grid lanes',
+		status: 'Baseline 未達（Safari）',
+		summary: '高さの違う要素を、行の区切りなしで隙間なく詰めて並べる',
+		mdn: 'https://developer.mozilla.org/ja/docs/Web/CSS/Guides/Grid_layout/Grid_lanes',
+	},
+	{
 		slug: 'color',
 		title: 'oklch と新しい色の関数',
 		status: 'Baseline 2023〜2026',
