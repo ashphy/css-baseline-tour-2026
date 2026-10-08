@@ -1,0 +1,25 @@
+<div class="phrase-demo">
+	<section class="phrase-step">
+		<p class="phrase-step-label">STEP 1</p>
+		<h3 class="phrase-step-title">単語の途中で改行される</h3>
+		<p>日本語の文章は、どの文字の間でも改行されます。幅の狭い見出しやボタンでは、「勉強会」が「勉強」と「会」に分かれるように、単語の途中で行が変わります。右下の角をドラッグして幅を変えてみてください。</p>
+		<div class="phrase-box">
+			<p class="phrase-heading">CSSの新しい機能を触りながら学ぶ勉強会を来月開催します</p>
+		</div>
+	</section>
+
+	<section class="phrase-step">
+		<p class="phrase-step-label">STEP 2</p>
+		<h3 class="phrase-step-title">文節の区切りで改行する</h3>
+		<p><code>word-break: auto-phrase</code> を指定すると、ブラウザーが文章を文節に分け、文節の区切りで改行します。<code>lang="ja"</code> の要素だけが対象です。</p>
+		<div class="phrase-box">
+			<!-- @key -->
+			<p lang="ja" class="phrase-heading phrase-auto">CSSの新しい機能を触りながら学ぶ勉強会を来月開催します</p>
+			<!-- @end -->
+		</div>
+		<p><code>text-wrap: balance</code> を合わせると、各行の長さもそろいます。</p>
+		<div class="phrase-box">
+			<p lang="ja" class="phrase-heading phrase-auto phrase-balance">CSSの新しい機能を触りながら学ぶ勉強会を来月開催します</p>
+		</div>
+	</section>
+</div>

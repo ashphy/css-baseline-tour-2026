@@ -1,0 +1,71 @@
+.phrase-demo {
+	line-height: 1.8;
+}
+
+.phrase-demo p {
+	margin: 0 0 12px;
+}
+
+.phrase-demo code {
+	font-family: var(--font-mono);
+	font-size: 0.85rem;
+	font-weight: 600;
+}
+
+.phrase-step {
+	display: grid;
+	gap: 4px;
+	padding-bottom: 32px;
+}
+
+.phrase-step + .phrase-step {
+	padding-top: 32px;
+	border-top: 1px solid var(--color-border);
+}
+
+.phrase-demo .phrase-step-label {
+	margin: 0;
+	color: var(--color-accent);
+	font-family: var(--font-mono);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+}
+
+.phrase-step-title {
+	margin: 0 0 8px;
+	font-size: 1.4rem;
+}
+
+/* 右下の角をドラッグして幅を変えられる箱 */
+.phrase-box {
+	width: 11em;
+	min-width: 4em;
+	max-width: 100%;
+	margin: 8px 0 16px;
+	padding: 16px 20px;
+	overflow: hidden;
+	resize: horizontal;
+	border: 1px solid var(--color-border);
+	border-radius: 12px;
+	background: white;
+	font-size: 1.5rem;
+}
+
+.phrase-demo .phrase-heading {
+	margin: 0;
+	font-weight: 700;
+	line-height: 1.5;
+}
+
+/* @key */
+/* 文節の区切りで改行する */
+.phrase-auto {
+	word-break: auto-phrase;
+}
+
+/* 各行の長さをそろえる */
+.phrase-balance {
+	text-wrap: balance;
+}
+/* @end */

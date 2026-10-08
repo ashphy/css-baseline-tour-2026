@@ -66,6 +66,13 @@ export const features: Feature[] = [
 		mdn: 'https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Customizable_select',
 	},
 	{
+		slug: 'word-break-auto-phrase',
+		title: 'word-break: auto-phrase',
+		status: 'Baseline 未達（Chrome）',
+		summary: '日本語の文章を、文節の区切りで改行する',
+		mdn: 'https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Properties/word-break',
+	},
+	{
 		slug: 'color',
 		title: 'oklch と新しい色の関数',
 		status: 'Baseline 2023〜2026',

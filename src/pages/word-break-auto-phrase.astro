@@ -1,0 +1,21 @@
+---
+import FeatureLayout from '../layouts/FeatureLayout.astro';
+import compareHtml from '../demos/word-break-auto-phrase/compare/demo.html?raw';
+import compareCss from '../demos/word-break-auto-phrase/compare/style.css?raw';
+
+const demos = [
+	{
+		id: 'compare',
+		label: '比較',
+		html: compareHtml,
+		css: compareCss,
+		points: [
+			{ name: 'word-break: auto-phrase', description: '日本語の文章を文節に分け、文節の区切りで改行する。対応していないブラウザーでは normal と同じ動きになる' },
+			{ name: 'lang="ja"', description: '文節に分けるのは、言語が日本語の要素だけ。html 要素に指定してあれば子孫にも引き継がれる' },
+			{ name: 'text-wrap: balance', description: '各行の長さをそろえる。auto-phrase と合わせると、見出しが読みやすく折り返される' },
+		],
+	},
+];
+---
+
+<FeatureLayout slug="word-break-auto-phrase" demos={demos} />

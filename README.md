@@ -16,6 +16,7 @@
 | text-autospace | 一部 Baseline 2025（normal / no-autospace） |
 | text-box | Baseline 未達（Chrome・Safari） |
 | Customizable `<select>` | Baseline 未達（Chrome・Safari） |
+| word-break: auto-phrase | Baseline 未達（Chrome） |
 
 紹介する機能を選ぶための候補一覧は [docs/candidates.md](docs/candidates.md) にあります。
 
