@@ -145,7 +145,7 @@ const tabCss = demos
 		overflow: auto;
 		border: 0;
 		border-right: 1px solid var(--color-border);
-		background: var(--color-surface);
+		background: var(--color-bg);
 		color: inherit;
 	}
 
@@ -198,7 +198,7 @@ const tabCss = demos
 		height: 13px;
 		border: 3px solid var(--color-border);
 		border-radius: 50%;
-		background: var(--color-surface);
+		background: var(--color-bg);
 	}
 
 	.toc li a small {
@@ -208,7 +208,7 @@ const tabCss = demos
 	}
 
 	.toc li a:hover {
-		background: var(--color-bg);
+		background: var(--color-surface);
 	}
 
 	.toc li[data-past] a::before {
@@ -217,7 +217,8 @@ const tabCss = demos
 	}
 
 	.toc li a[aria-current='page'] {
-		background: var(--color-accent-soft);
+		background: var(--color-surface);
+		box-shadow: 0 1px 3px rgb(0 0 0 / 0.08);
 		font-weight: 600;
 	}
 
@@ -308,11 +309,8 @@ const tabCss = demos
 		padding: 24px 36px;
 	}
 
-	/* デモを方眼の上に置き、試料として見せる */
 	.demo-pane {
-		background-color: var(--color-bg);
-		background-image: radial-gradient(color-mix(in oklch, var(--color-border) 70%, var(--color-muted)) 1px, transparent 1px);
-		background-size: 16px 16px;
+		background: var(--color-surface);
 	}
 
 	.code-pane {
@@ -326,7 +324,6 @@ const tabCss = demos
 		gap: 4px;
 		margin-bottom: 24px;
 		border-bottom: 1px solid var(--color-border);
-		background: var(--color-bg);
 	}
 
 	.tabs[hidden] {
