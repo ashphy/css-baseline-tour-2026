@@ -22,8 +22,6 @@ interface Props {
 const { slug, demos } = Astro.props;
 const index = features.findIndex((f) => f.slug === slug);
 const feature = features[index];
-const prev = features[index - 1];
-const next = features[index + 1];
 
 // 選択中のタブに対応するデモとコードだけを表示する
 const tabCss = demos
@@ -55,10 +53,6 @@ const tabCss = demos
 
 		<header class="header">
 			<button type="button" class="toc-button" popovertarget="toc">目次</button>
-			<nav class="pager">
-				{prev ? <a href={url(prev.slug)} data-prev>← {prev.title}</a> : <span />}
-				{next ? <a href={url(next.slug)} data-next>{next.title} →</a> : <span />}
-			</nav>
 			<h1>{feature.title}</h1>
 			<p class="lead">
 				<span class="status" data-limited={feature.status.includes('未達') || undefined}>{feature.status}</span>
@@ -130,18 +124,6 @@ const tabCss = demos
 	{demos.map((d) => d.js && <script type="module" is:inline set:html={d.js} />)}
 	<style is:inline set:html={tabCss}></style>
 </BaseLayout>
-
-<script>
-	// ← → キーで前後のページへ移動する（入力欄の操作中は除く）
-	document.addEventListener('keydown', (event) => {
-		if (event.target instanceof Element && event.target.closest('input, textarea, select, [contenteditable]')) return;
-		if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
-		const link = document.querySelector<HTMLAnchorElement>(
-			event.key === 'ArrowLeft' ? '[data-prev]' : event.key === 'ArrowRight' ? '[data-next]' : '',
-		);
-		link?.click();
-	});
-</script>
 
 <style>
 	.feature {
@@ -259,22 +241,6 @@ const tabCss = demos
 		padding: 16px 36px 20px;
 		border-bottom: 1px solid var(--color-border);
 		background: var(--color-surface);
-	}
-
-	.pager {
-		display: flex;
-		justify-content: space-between;
-		font-family: var(--font-mono);
-		font-size: 0.8rem;
-	}
-
-	.pager a {
-		color: var(--color-muted);
-		text-decoration: none;
-	}
-
-	.pager a:hover {
-		color: var(--color-accent);
 	}
 
 	h1 {
