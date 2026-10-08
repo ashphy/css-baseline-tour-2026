@@ -19,6 +19,7 @@
 | word-break: auto-phrase | Baseline 未達（Chrome） |
 | Gap decorations | Baseline 未達（Chrome） |
 | Grid lanes | Baseline 未達（Safari） |
+| Anchor positioning | Baseline 未達（Chrome・Firefox・Safari 27） |
 
 紹介する機能を選ぶための候補一覧は [docs/candidates.md](docs/candidates.md) にあります。
 

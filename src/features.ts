@@ -87,6 +87,13 @@ export const features: Feature[] = [
 		mdn: 'https://developer.mozilla.org/ja/docs/Web/CSS/Guides/Grid_layout/Grid_lanes',
 	},
 	{
+		slug: 'anchor-positioning',
+		title: 'Anchor positioning',
+		status: 'Baseline 未達（Chrome・Firefox・Safari 27）',
+		summary: 'ある要素の位置を基準に、ツールチップやメニューを CSS だけで配置する',
+		mdn: 'https://developer.mozilla.org/ja/docs/Web/CSS/Guides/Anchor_positioning',
+	},
+	{
 		slug: 'color',
 		title: 'oklch と新しい色の関数',
 		status: 'Baseline 2023〜2026',

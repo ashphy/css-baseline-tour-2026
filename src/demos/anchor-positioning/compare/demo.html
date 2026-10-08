@@ -1,0 +1,38 @@
+<div class="anchor-demo">
+	<section class="anchor-step">
+		<p class="anchor-step-label">STEP 1</p>
+		<h3 class="anchor-step-title">表のメニューが箱で切れる</h3>
+		<p>表は、狭い画面で横にスクロールできるよう <code>overflow-x: auto</code> の箱に入れるのが一般的です。各行の「…」を押すとメニューが開きます。メニューは <code>position: absolute</code> でボタンの下に置いていますが、最後の行のメニューは箱の下端で切れ、箱の中のスクロールになってしまいます。</p>
+		<div class="anchor-table-wrap">
+			<table class="anchor-table">
+				<tr><th>ファイル</th><th>更新日</th><th>サイズ</th><th>所有者</th><th></th></tr>
+				<tr><td>見積書.pdf</td><td>10月1日</td><td>120 KB</td><td>山田</td><td><details class="anchor-details"><summary aria-label="操作">…</summary><ul class="anchor-menu anchor-details-menu"><li><button type="button">名前を変更</button></li><li><button type="button">複製</button></li><li><button type="button">削除</button></li></ul></details></td></tr>
+				<tr><td>議事録.docx</td><td>10月5日</td><td>240 KB</td><td>山田</td><td><details class="anchor-details"><summary aria-label="操作">…</summary><ul class="anchor-menu anchor-details-menu"><li><button type="button">名前を変更</button></li><li><button type="button">複製</button></li><li><button type="button">削除</button></li></ul></details></td></tr>
+				<tr><td>予算.xlsx</td><td>10月8日</td><td>360 KB</td><td>山田</td><td><details class="anchor-details" open><summary aria-label="操作">…</summary><ul class="anchor-menu anchor-details-menu"><li><button type="button">名前を変更</button></li><li><button type="button">複製</button></li><li><button type="button">削除</button></li></ul></details></td></tr>
+			</table>
+		</div>
+	</section>
+
+	<section class="anchor-step">
+		<p class="anchor-step-label">STEP 2</p>
+		<h3 class="anchor-step-title">ボタンを基準に、最前面に出す</h3>
+		<p>メニューを Popover にして、Anchor positioning でボタンの下に置きました。最後の行の「…」を押すと、メニューは箱の外まで切れずに表示されます。</p>
+		<div class="anchor-table-wrap">
+			<table class="anchor-table">
+				<tr><th>ファイル</th><th>更新日</th><th>サイズ</th><th>所有者</th><th></th></tr>
+				<tr><td>見積書.pdf</td><td>10月1日</td><td>120 KB</td><td>山田</td><td>
+					<!-- @key -->
+					<button type="button" class="anchor-menu-button" popovertarget="anchor-menu-1" aria-label="操作">…</button>
+					<ul id="anchor-menu-1" class="anchor-menu anchor-popover" popover>
+						<li><button type="button">名前を変更</button></li>
+						<li><button type="button">複製</button></li>
+						<li><button type="button">削除</button></li>
+					</ul>
+					<!-- @end -->
+				</td></tr>
+				<tr><td>議事録.docx</td><td>10月5日</td><td>240 KB</td><td>山田</td><td><button type="button" class="anchor-menu-button" popovertarget="anchor-menu-2" aria-label="操作">…</button><ul id="anchor-menu-2" class="anchor-menu anchor-popover" popover><li><button type="button">名前を変更</button></li><li><button type="button">複製</button></li><li><button type="button">削除</button></li></ul></td></tr>
+				<tr><td>予算.xlsx</td><td>10月8日</td><td>360 KB</td><td>山田</td><td><button type="button" class="anchor-menu-button" popovertarget="anchor-menu-3" aria-label="操作">…</button><ul id="anchor-menu-3" class="anchor-menu anchor-popover" popover><li><button type="button">名前を変更</button></li><li><button type="button">複製</button></li><li><button type="button">削除</button></li></ul></td></tr>
+			</table>
+		</div>
+	</section>
+</div>

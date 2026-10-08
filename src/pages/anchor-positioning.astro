@@ -1,0 +1,21 @@
+---
+import FeatureLayout from '../layouts/FeatureLayout.astro';
+import compareHtml from '../demos/anchor-positioning/compare/demo.html?raw';
+import compareCss from '../demos/anchor-positioning/compare/style.css?raw';
+
+const demos = [
+	{
+		id: 'compare',
+		label: '比較',
+		html: compareHtml,
+		css: compareCss,
+		points: [
+			{ name: 'popovertarget', description: 'ボタンで開いた Popover は、そのボタンが自動でアンカー（基準にする要素）になる' },
+			{ name: 'position-area', description: 'アンカーのどちら側に置くかを決める。bottom span-left は、アンカーの下に置き、右端をそろえて左へ広げる' },
+			{ name: 'anchor-name / position-anchor', description: 'Popover 以外の要素を配置するときは、アンカーに名前を付け、配置する要素からその名前を指定する' },
+		],
+	},
+];
+---
+
+<FeatureLayout slug="anchor-positioning" demos={demos} />
