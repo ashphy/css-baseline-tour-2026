@@ -145,23 +145,24 @@
 	box-shadow: 0 0 0 1px rgb(0 0 0 / 0.5);
 }
 
-/* スライダーの帯には、その値だけを動かしたときの色の変化を描く */
 .oklch-picker-rgb {
 	--color: rgb(var(--r) var(--g) var(--b));
 }
 
+/* rgb は3つの光を混ぜるので、帯はそれぞれの光の量だけを表す */
 .oklch-picker-rgb [name='r'] {
-	--track: linear-gradient(to right, rgb(0 var(--g) var(--b)), rgb(255 var(--g) var(--b)));
+	--track: linear-gradient(to right, black, rgb(255 0 0));
 }
 
 .oklch-picker-rgb [name='g'] {
-	--track: linear-gradient(to right, rgb(var(--r) 0 var(--b)), rgb(var(--r) 255 var(--b)));
+	--track: linear-gradient(to right, black, rgb(0 255 0));
 }
 
 .oklch-picker-rgb [name='b'] {
-	--track: linear-gradient(to right, rgb(var(--r) var(--g) 0), rgb(var(--r) var(--g) 255));
+	--track: linear-gradient(to right, black, rgb(0 0 255));
 }
 
+/* hsl の帯には、その値だけを動かしたときの色の変化を描く */
 .oklch-picker-hsl {
 	--color: hsl(var(--h) calc(var(--s) * 1%) calc(var(--l) * 1%));
 }
