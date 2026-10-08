@@ -102,11 +102,16 @@
 
 .oklch-sliders label {
 	display: grid;
-	grid-template-columns: 1em 1fr 2.5em;
+	grid-template-columns: 4em 1fr 2.5em;
 	gap: 12px;
 	align-items: center;
 	font-family: var(--font-mono);
 	font-size: 0.8rem;
+}
+
+.oklch-sliders small {
+	color: var(--color-muted);
+	font-size: 0.75rem;
 }
 
 .oklch-sliders output {
