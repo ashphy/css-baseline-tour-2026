@@ -1,0 +1,51 @@
+<div class="gap-demo">
+	<section class="gap-step">
+		<p class="gap-step-label">STEP 1</p>
+		<h3 class="gap-step-title">border で区切ると端にも線が出る</h3>
+		<p>Grid の要素どうしを線で区切るために、各要素の右と下に border を付けました。外側の端にも線が出てしまいます。右下の角をドラッグして幅を変えると列の数が変わり、どの要素が端に来るかも変わるので、<code>:nth-child()</code> で消すのも難しくなります。</p>
+		<div class="gap-box">
+			<div class="gap-grid gap-border">
+				<div class="gap-tile"><p class="gap-tile-label">訪問者</p><p class="gap-tile-value">12,480</p></div>
+				<div class="gap-tile"><p class="gap-tile-label">新規登録</p><p class="gap-tile-value">326</p></div>
+				<div class="gap-tile"><p class="gap-tile-label">購入</p><p class="gap-tile-value">89</p></div>
+				<div class="gap-tile"><p class="gap-tile-label">売上</p><p class="gap-tile-value">¥1.2M</p></div>
+				<div class="gap-tile"><p class="gap-tile-label">解約</p><p class="gap-tile-value">4</p></div>
+				<div class="gap-tile"><p class="gap-tile-label">問い合わせ</p><p class="gap-tile-value">17</p></div>
+			</div>
+		</div>
+	</section>
+
+	<section class="gap-step">
+		<p class="gap-step-label">STEP 2</p>
+		<h3 class="gap-step-title">隙間に線を引く</h3>
+		<p><code>column-rule</code> と <code>row-rule</code> を Grid に指定すると、要素の間の隙間だけに線が引かれます。幅を変えて列の数が変わっても、線は隙間についていきます。<code>rule-visibility-items: around</code> は、両側とも空きセルの所には線を引かないようにします。</p>
+		<div class="gap-box">
+			<!-- @key -->
+			<div class="gap-grid gap-rule">
+				<div class="gap-tile"><p class="gap-tile-label">訪問者</p><p class="gap-tile-value">12,480</p></div>
+				<div class="gap-tile"><p class="gap-tile-label">新規登録</p><p class="gap-tile-value">326</p></div>
+				<div class="gap-tile"><p class="gap-tile-label">購入</p><p class="gap-tile-value">89</p></div>
+				<div class="gap-tile"><p class="gap-tile-label">売上</p><p class="gap-tile-value">¥1.2M</p></div>
+				<div class="gap-tile"><p class="gap-tile-label">解約</p><p class="gap-tile-value">4</p></div>
+				<div class="gap-tile"><p class="gap-tile-label">問い合わせ</p><p class="gap-tile-value">17</p></div>
+			</div>
+			<!-- @end -->
+		</div>
+	</section>
+
+	<section class="gap-step">
+		<p class="gap-step-label">STEP 3</p>
+		<h3 class="gap-step-title">交わる所で線を切る</h3>
+		<p><code>rule-break: intersection</code> で縦と横の線が交わる所で線を区切り、<code>rule-inset-junction</code> で交点の前後を空けます。</p>
+		<div class="gap-box">
+			<div class="gap-grid gap-rule gap-junction">
+				<div class="gap-tile"><p class="gap-tile-label">訪問者</p><p class="gap-tile-value">12,480</p></div>
+				<div class="gap-tile"><p class="gap-tile-label">新規登録</p><p class="gap-tile-value">326</p></div>
+				<div class="gap-tile"><p class="gap-tile-label">購入</p><p class="gap-tile-value">89</p></div>
+				<div class="gap-tile"><p class="gap-tile-label">売上</p><p class="gap-tile-value">¥1.2M</p></div>
+				<div class="gap-tile"><p class="gap-tile-label">解約</p><p class="gap-tile-value">4</p></div>
+				<div class="gap-tile"><p class="gap-tile-label">問い合わせ</p><p class="gap-tile-value">17</p></div>
+			</div>
+		</div>
+	</section>
+</div>

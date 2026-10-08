@@ -1,0 +1,104 @@
+.gap-demo {
+	line-height: 1.8;
+}
+
+.gap-demo p {
+	margin: 0 0 12px;
+}
+
+.gap-demo code {
+	font-family: var(--font-mono);
+	font-size: 0.85rem;
+	font-weight: 600;
+}
+
+.gap-step {
+	display: grid;
+	gap: 4px;
+	padding-bottom: 32px;
+}
+
+.gap-step + .gap-step {
+	padding-top: 32px;
+	border-top: 1px solid var(--color-border);
+}
+
+.gap-demo .gap-step-label {
+	margin: 0;
+	color: var(--color-accent);
+	font-family: var(--font-mono);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+}
+
+.gap-step-title {
+	margin: 0 0 8px;
+	font-size: 1.4rem;
+}
+
+/* 右下の角をドラッグして幅を変えられる箱 */
+.gap-box {
+	width: 100%;
+	min-width: 12em;
+	max-width: 100%;
+	margin: 8px 0 16px;
+	padding: 20px;
+	overflow: hidden;
+	resize: horizontal;
+	border: 1px dashed var(--color-border);
+	border-radius: 12px;
+	background: white;
+}
+
+.gap-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(9em, 1fr));
+	gap: 24px;
+}
+
+.gap-tile {
+	padding: 4px 8px;
+}
+
+.gap-demo .gap-tile-label {
+	margin: 0;
+	color: var(--color-muted);
+	font-size: 0.85rem;
+}
+
+.gap-demo .gap-tile-value {
+	margin: 0;
+	font-size: 1.6rem;
+	font-weight: 700;
+	line-height: 1.4;
+}
+
+/* 従来の方法: 各要素に border を付ける */
+.gap-border {
+	gap: 0;
+}
+
+.gap-border .gap-tile {
+	padding: 16px 20px;
+	border-right: 2px solid #c5cae9;
+	border-bottom: 2px solid #c5cae9;
+}
+
+/* @key */
+/* 隙間の中央に縦と横の線を引く */
+.gap-rule {
+	column-rule: 2px solid #c5cae9;
+	row-rule: 2px solid #c5cae9;
+	/* 両側とも空きセルの所には線を引かない */
+	rule-visibility-items: around;
+	/* 線の端を交点の中心まで伸ばし、途切れた線を交わる線につなげる */
+	rule-inset-junction: -50%;
+}
+
+/* 交わる所で線を切り、交点の前後を 8px 空ける */
+.gap-junction {
+	rule-break: intersection;
+	rule-inset-junction: 8px;
+}
+/* @end */

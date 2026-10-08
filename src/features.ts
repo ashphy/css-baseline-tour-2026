@@ -73,6 +73,13 @@ export const features: Feature[] = [
 		mdn: 'https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Properties/word-break',
 	},
 	{
+		slug: 'gap-decorations',
+		title: 'Gap decorations',
+		status: 'Baseline 未達（Chrome）',
+		summary: 'Grid や Flexbox の要素の間の隙間に、区切り線を引く',
+		mdn: 'https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Properties/row-rule',
+	},
+	{
 		slug: 'color',
 		title: 'oklch と新しい色の関数',
 		status: 'Baseline 2023〜2026',

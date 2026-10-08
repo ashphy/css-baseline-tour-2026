@@ -1,0 +1,22 @@
+---
+import FeatureLayout from '../layouts/FeatureLayout.astro';
+import compareHtml from '../demos/gap-decorations/compare/demo.html?raw';
+import compareCss from '../demos/gap-decorations/compare/style.css?raw';
+
+const demos = [
+	{
+		id: 'compare',
+		label: '比較',
+		html: compareHtml,
+		css: compareCss,
+		points: [
+			{ name: 'column-rule / row-rule', description: '列の間と行の間の隙間に線を引く。これまで段組み（multi-column）だけで使えた column-rule が、Grid と Flexbox でも使えるようになった' },
+			{ name: 'rule-visibility-items', description: '空きセルの横に線を引くかを決める。around は片側だけでも要素があれば引き、between は両側に要素がある所だけに引く' },
+			{ name: 'rule-break', description: '線をどこで区切るかを決める。intersection は縦と横の線が交わる所ごとに区切る' },
+			{ name: 'rule-inset-junction', description: '線の端を、交点からどれだけ離すかを決める。負の値にすると、交点の中へ伸びる' },
+		],
+	},
+];
+---
+
+<FeatureLayout slug="gap-decorations" demos={demos} />
