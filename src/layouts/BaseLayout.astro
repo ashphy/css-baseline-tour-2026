@@ -3,9 +3,12 @@ import { url } from '../features';
 
 interface Props {
 	title: string;
+	description: string;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
+const pageUrl = new URL(Astro.url.pathname, Astro.site);
+const imageUrl = new URL(url('ogp.png'), Astro.site);
 ---
 
 <html lang="ja">
@@ -22,6 +25,14 @@ const { title } = Astro.props;
 			href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans+JP:wght@400;600;700&display=swap"
 		/>
 		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="CSS Baseline Tour 2026" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={pageUrl} />
+		<meta property="og:image" content={imageUrl} />
+		<meta name="twitter:card" content="summary_large_image" />
 	</head>
 	<body>
 		<slot />
